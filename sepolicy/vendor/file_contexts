@@ -1,2 +1,5 @@
+# FPS Info
+/sys/module/primary_display/parameters/display_framerate_main      u:object_r:sysfs_fpsinfo:s0
+
 # Light
 /vendor/bin/hw/android\.hardware\.light-service\.RMX1941      u:object_r:hal_light_default_exec:s0

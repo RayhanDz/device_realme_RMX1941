@@ -303,10 +303,6 @@ PRODUCT_PACKAGES += \
     NotchBarKiller \
     BatteryHealthOverlay 
 
-# Power
-PRODUCT_PACKAGES += \
-    power.mt6765
-
 # Properties
 -include $(DEVICE_PATH)/system.prop
 -include $(DEVICE_PATH)/vendor.prop
@@ -357,12 +353,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/seccomp/mediacodec.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy \
     $(LOCAL_PATH)/configs/seccomp/mediaextractor.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediaextractor.policy \
     $(LOCAL_PATH)/configs/seccomp/mediaswcodec.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediaswcodec.policy
-<<<<<<< HEAD
-	
-=======
 
-
->>>>>>> 5dc477d (RMX1941: Inject libcompiler_rt for WiFi blobs)
 # Screen density
 PRODUCT_AAPT_CONFIG := xxhdpi
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi

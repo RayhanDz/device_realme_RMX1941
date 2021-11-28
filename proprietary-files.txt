@@ -2146,6 +2146,13 @@ lib/vendor.mediatek.hardware.videotelephony@1.0-impl.so
 lib64/vendor.mediatek.hardware.videotelephony@1.0-impl.so
 
 # WiFi
+vendor/bin/hostapd_cli
+vendor/bin/hw/hostapd
+vendor/bin/hw/wpa_supplicant
+vendor/bin/wpa_cli
+vendor/etc/init/hostapd.android.rc
+vendor/lib/libwpa_client.so
+vendor/lib64/libwpa_client.so
 
 # rootdir
 vendor/bin/ccci_fsd

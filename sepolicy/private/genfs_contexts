@@ -1,7 +1,3 @@
-genfscon sysfs /board_properties u:object_r:sysfs_board_properties:s0
-
-# Touchpanel
-genfscon proc /touchpanel             u:object_r:proc_touchpanel:s0
-
-# proc_ged
-genfscon proc /ged u:object_r:proc_ged:s0
+genfscon proc  /gpufreq     u:object_r:proc_gpufreq:s0
+genfscon proc  /touchpanel  u:object_r:proc_tp:s0
+genfscon sysfs /module/primary_display/parameters u:object_r:sysfs_fps:s0

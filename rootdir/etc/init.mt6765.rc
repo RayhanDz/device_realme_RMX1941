@@ -1,11 +1,14 @@
 import /system/etc/init/init.safailnet.rc
-
-on early-init 
-     start adbd
+import ${ro.vendor.rc}init.volte.rc
 
 on init
     mount none /vendor/lost+found /vendor/overlay bind
-    setprop sys.usb.ffs.aio_compat 1
+	
+   # ZRAM setup
+    write /sys/block/zram0/comp_algorithm lz4
+    write /proc/sys/vm/page-cluster 0
+    write /proc/sys/vm/swappiness 100
+    write /proc/sys/vm/vfs_cache_pressure 100
 
     # Boot time fs tune
     write /sys/block/sda/queue/iostats 0
@@ -25,7 +28,7 @@ on init
     write /sys/block/sdc/queue/nr_requests 256
     write /sys/block/dm-0/queue/read_ahead_kb 2048
     write /sys/block/dm-1/queue/read_ahead_kb 2048
-    setprop persist.vendor.vilte_support 0
+    setprop persist.vendor.vilte_support 1
 
     # Custom overrides that need to happen right on boot
     # Override vendor fstab
@@ -35,6 +38,11 @@ on init
 on fs
     mount_all /vendor/etc/fstab.mt6765 --early
     mount_all /vendor/etc/fstab.mt6765 --late
+	
+    mkdir /mnt/vendor/oppo_product 0771 system system
+    mkdir /mnt/vendor/oppo_version 0771 system system
+    mount ext4 /dev/block/mapper/version.${ro.vendor.version_variant} /mnt/vendor/oppo_version ro
+    mount ext4 /dev/block/mapper/oppo_product /mnt/vendor/oppo_product ro
 
 on post-fs
     # Unmount the overridden fstab because the SELinux label is incorrect
@@ -42,55 +50,100 @@ on post-fs
     # (at post-fs, the fstab has already been used to mount the partitions,
     #  so it is fine to just revert back)
     umount /vendor/etc/fstab.mt6765
+	
+    # boot perf. tune
+    write /proc/perfmgr/boost_ctrl/eas_ctrl/boot_boost "0 100"
+    write /proc/perfmgr/boost_ctrl/eas_ctrl/boot_boost "1 100"
+    write /proc/perfmgr/boost_ctrl/eas_ctrl/boot_boost "2 100"
+    write /proc/perfmgr/boost_ctrl/eas_ctrl/boot_boost "3 100"
+    write /proc/sys/kernel/sched_stune_task_threshold 0
 
 on property:sys.boot_completed=1
     # Restrict permissions to socket file 
     # to hide Magisk & co.
     chmod 440 /proc/net/unix
+	
+on property:vendor.post_boot.parsed=1
+	
+service prop-adap-core /vendor/bin/self-init core
+    class core
+    user root
+    oneshot
+    seclabel u:r:rutilsdaemon:s0
+service prop-adap-main /vendor/bin/self-init main
+    class main
+    user root
+    oneshot
+    seclabel u:r:rutilsdaemon:s0
+service media-resource-reconciliation /vendor/bin/self-init reconcile_media_resource
+    user root
+    oneshot
+    disabled
+    seclabel u:r:rutilsdaemon:s0
+service prop-adap-core-gsi /vendor/bin/self-init gsicore
+    class core
+    user root
+    group root system radio
+    oneshot
+
+service prop-adap-main-gsi /vendor/bin/self-init gsimain
+    class main
+    user root
+    group root system radio
+    oneshot
+
+on property:ro.oppo.reconcile_media_resource=1
+    start media-resource-reconciliation
 
 on post-fs-data
     # VideoCodec
     chmod 0666 /dev/video0
     chmod 0666 /dev/video1
+	
+    # Touch Panel
+    # chmod 0664 /dev/touch
+    chown root diag /sys/module/tpd_setting/parameters/tpd_calmat
+    chown root diag /sys/module/tpd_setting/parameters/tpd_em_debounce_time
+    chown root diag /sys/module/tpd_setting/parameters/tpd_mode
+    chown root diag /sys/module/tpd_setting/parameters/tpd_em_debounce_time0
+    chown root diag /sys/module/tpd_setting/parameters/tpd_em_debounce_time1
+    chown root diag /sys/module/tpd_setting/parameters/tpd_em_spl_num
+    chown root diag /sys/module/tpd_setting/parameters/tpd_em_pressure_threshold
+    chown root diag /sys/module/tpd_setting/parameters/tpd_em_auto_time_interval
+    chown root diag /sys/module/tpd_setting/parameters/tpd_em_sample_cnt
+    chown root diag /sys/module/tpd_setting/parameters/tpd_em_asamp
+    chown root diag /sys/module/tpd_debug/parameters/tpd_em_log
+    chown root diag /sys/module/tpd_debug/parameters/tpd_em_log_to_fs
 
-    # Set permissions for FPC FP
-    chown system  system /sys/bus/platform/devices/fpc_interrupt/clk_enable
-    chown system  system /sys/bus/platform/devices/fpc_interrupt/wakelock_enable
-    chown system  system /sys/bus/platform/devices/fpc_interrupt/irq
-    chown system  system /sys/bus/platform/devices/fpc_interrupt/irq_enable
-    chown system  system /sys/bus/platform/devices/fpc_interrupt/irq_unexpected
-    chmod 0200 /sys/bus/platform/devices/fpc_interrupt/irq_enable
-    chmod 0200 /sys/bus/platform/devices/fpc_interrupt/clk_enable
-    chmod 0200 /sys/bus/platform/devices/fpc_interrupt/wakelock_enable
-    chmod 0600 /sys/bus/platform/devices/fpc_interrupt/irq
-    chmod 0660 /sys/bus/platform/devices/fpc_interrupt/irq_unexpected
+    chmod 0666 /dev/pmem_multimedia
+	
+    #Accdet
+    chown root radio /sys/devices/platform/Accdet_Driver/driver/accdet_call_state
+	
+    #Fingerprint
+    chmod 0666 /dev/goodix_fp
+	
+    #kpd
+    chown radio radio /sys/devices/platform/mtk-kpd/driver/kpd_call_state
 
+    #VOW
+    chmod 0640 /dev/vow
+    chown media media /dev/vow
+
+on boot
     # USB-OTG
     chown system system /sys/class/power_supply/usb/otg_switch
-    chmod 0666 /sys/class/power_supply/usb/otg_switch
+    chmod 0644 /sys/class/power_supply/usb/otg_switch 
+    write /sys/class/power_supply/usb/otg_switch 1 
 
     # Disable edge limit control interface
     write /proc/touchpanel/oppo_tp_limit_enable 0
+    write /proc/touchpanel/oppo_tp_direction 1
 
     # Services
     stop console
 
 on boot
-	# INPUT
-    chown system input /dev/input/event0
-    chown system input /dev/input/event1
-    chown system input /dev/input/event2
-
-    # DT2W
-    chown system system /proc/touchpanel/double_tap_enable
-    chmod 0666 /proc/touchpanel/double_tap_enable
-    write /proc/touchpanel/double_tap_enable 1
-
-    # WiFi fix by Techyminati
-    setprop ro.boot.vendor.overlay.static false
-    setprop vendor.connsys.driver.ready yes
-
-on property:sys.boot_completed=1
     # Toggle airplane mode on and off on boot to enable volte.
     # This hack needs ImsInit commit to request ims on boot to work properly
 
@@ -100,7 +153,17 @@ on property:sys.boot_completed=1
 
     exec - root -- /system/bin/sh -c "settings put global airplane_mode_on 0"
     exec - root -- /system/bin/sh -c "am broadcast -a android.intent.action.AIRPLANE_MODE --ez state false"
-    
+	
+    # INPUT
+    chown system input /dev/input/event0
+    chown system input /dev/input/event1
+    chown system input /dev/input/event2
+
+    # DT2W
+    chown system system /proc/touchpanel/double_tap_enable
+    chmod 0644 /proc/touchpanel/double_tap_enable
+    write /proc/touchpanel/double_tap_enable 1
+
     # ZRAM
     swapon_all /vendor/fstab.enableswap
 
@@ -117,13 +180,6 @@ on property:sys.boot_completed=1
     write /sys/block/dm-0/queue/read_ahead_kb 128
     write /sys/block/dm-1/queue/read_ahead_kb 128
 
-    setprop vendor.oppo.biometrics.fingerprint.boot_completed 1
-
-service oppo_fingerprints_sh /vendor/bin/sh /vendor/bin/init.oppo.fingerprints.sh
-    class main
-    user root
-    oneshot
-
 service face_hal /system/bin/true
     oneshot
     disabled
@@ -134,20 +190,35 @@ service set_zram /vendor/bin/sh /system/etc/init/set_zram.sh
     user root
     group system
     oneshot
-
-# Disable AOSP RIL if MTK RIL is up
-on property:vendor.ril.mtk=1
-    stop vendor.ril-daemon
+	
+service perf_profile /vendor/bin/sh /system/etc/init/perf_profile.sh
+    class late_start
+    disabled
+    user root
+    group system
+    oneshot
 
 # Performance profiles
 on property:perf_profile=1
     exec - root -- /system/bin/perf_profile.sh 1
 
-on property:perf_profile=0
-    exec - root -- /system/bin/perf_profile.sh 0
-
 on property:sys.boot_completed=1
     chown root root /sys/module/ged/parameters/gx_force_cpu_boost
     chown root root /proc/cpufreq/cpufreq_power_mode
     chown root root /proc/cpufreq/cpufreq_cci_mode
+	
     start set_zram
+	
+	start perf_profile
+	
+	# Enable ZRAM
+    swapon_all /system/etc/fstab.mt6765
+    #Reinit lmkd to reconfigure lmkd properties
+    setprop lmkd.reinit 1
+
+    # Restrict permissions to socket file 
+    # to hide Magisk & co.
+    chmod 440 /proc/net/unix
+
+on property:persist.vendor.radio.port_index=""
+    setprop sys.usb.config adb

@@ -17,6 +17,11 @@
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_product.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/base_system_ext.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/telephony_system_ext.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/telephony_system.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/base_system.mk)
 
 # Inherit some common NusantaraROM stuff.
 $(call inherit-product, vendor/nusantara/config/common_full_phone.mk)
@@ -25,24 +30,27 @@ $(call inherit-product, vendor/nusantara/config/common_full_phone.mk)
 $(call inherit-product, device/realme/RMX1941/device.mk)
 
 # NusantaraProject stuff
+TARGET_INCLUDE_PIXEL_CHARGER := true
 TARGET_BOOT_ANIMATION_RES := 720
 ALLOW_MISSING_DEPENDENCIES=true
 
-# Device identifier. This must come after all inclusions.
-PRODUCT_NAME := nad_RMX1941
+# Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := RMX1941
+PRODUCT_NAME := nad_RMX1941
 PRODUCT_BRAND := realme
 PRODUCT_MODEL := Realme C2
 PRODUCT_MANUFACTURER := realme
+PRODUCT_RELEASE_NAME := Realme C2
 
 # Build info
-BUILD_FINGERPRINT := "google/coral/coral:11/RQ3A.210805.001.A1/7474174:user/release-keys"
 PRODUCT_BUILD_PROP_OVERRIDES += \
     TARGET_DEVICE=RMX1941 \
     PRODUCT_NAME=RMX1941 \
     PRIVATE_BUILD_DESC="full_oppo6762-user 10 QP1A.190711.020 bedd37e98646d3a1 release-keys"
 
-PRODUCT_GMS_CLIENTID_BASE := android-realme
+# Build FP
+BUILD_FINGERPRINT :="google/redfin/redfin:11/RQ3A.210805.001.A1/7474174:user/release-keys"
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.build.fingerprint=$(BUILD_FINGERPRINT)
+PRODUCT_GMS_CLIENTID_BASE := android-oppo
+
+

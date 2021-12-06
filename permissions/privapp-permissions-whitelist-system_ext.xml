@@ -8,6 +8,9 @@
 		<permission name="android.permission.UPDATE_STATS"/>
 		<permission name="android.permission.PACKAGE_USAGE_STATS"/>
 		<permission name="android.permission.FORCE_STOP_PACKAGES"/>
+		<permission name="android.permission.REBOOT"/>
+		<permission name="android.permission.WRITE_APN_SETTINGS"/>
+		<permission name="android.permission.RECOVERY"/>
     </privapp-permissions>
     <privapp-permissions package="com.android.launcher3">
         <permission name="android.permission.INTERACT_ACROSS_USERS"/>
@@ -25,5 +28,12 @@
     </privapp-permissions>
 	<privapp-permissions package="com.android.settings">
 		<permission name="android.permission.ACCESS_FONT_MANAGER"/>
+		<permission name="android.permission.RESET_BATTERY_STATS"/>
+    </privapp-permissions>
+	<privapp-permissions package="com.android.wallpaper">
+		<permission name="android.permission.SET_WALLPAPER_COMPONENT"/>
+		<permission name="android.permission.WRITE_SECURE_SETTINGS"/>
+		<permission name="android.permission.MODIFY_DAY_NIGHT_MODE"/>
+		<permission name="android.permission.CHANGE_OVERLAY_PACKAGES"/>
     </privapp-permissions>
 </permissions>

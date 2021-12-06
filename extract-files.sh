@@ -25,9 +25,9 @@ export VENDOR=realme
 MY_DIR="${BASH_SOURCE%/*}"
 if [[ ! -d "${MY_DIR}" ]]; then MY_DIR="${PWD}"; fi
 
-ROOT="${MY_DIR}"/../../..
+ANDROID_ROOT="${MY_DIR}"/../../..
 
-HELPER="${ROOT}/vendor/nusantara/build/tools/extract_utils.sh"
+HELPER="${ANDROID_ROOT}/vendor/nusantara/build/tools/extract_utils.sh"
 if [ ! -f "${HELPER}" ]; then
     echo "Unable to find helper script at ${HELPER}"
     exit 1
@@ -59,8 +59,22 @@ if [ -z "${SRC}" ]; then
     SRC="adb"
 fi
 
+function blob_fixup {
+    case "$1" in
+        lib/libshowlogo.so)
+            "$PATCHELF" --add-needed "libshim_showlogo.so" "$2"
+            ;;
+        lib/libsink.so)
+            "$PATCHELF" --add-needed "libshim_vtservice.so" "$2"
+            ;;
+        bin/vtservice)
+            "$PATCHELF" --add-needed "libmtk_vt_service.so" "$2"
+            ;;
+    esac
+}
+
 # Initialize the helper for device
-setup_vendor "${DEVICE}" "${VENDOR}" "${ROOT}" true "${CLEAN_VENDOR}"
+setup_vendor "${DEVICE}" "${VENDOR}" "${ANDROID_ROOT}" true "${CLEAN_VENDOR}"
 
 extract "$MY_DIR"/proprietary-files.txt "$SRC" "$SECTION"
 

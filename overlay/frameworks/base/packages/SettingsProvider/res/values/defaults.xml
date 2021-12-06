@@ -20,5 +20,7 @@
 
     <!-- Disable UI touch sounds by default -->
     <bool name="def_sound_effects_enabled">false</bool>
-
+    <fraction name="def_window_animation_scale">10%</fraction>
+    <fraction name="def_window_transition_scale">10%</fraction>
+    <fraction name="def_window_animator_duration_scale">10%</fraction>
 </resources>

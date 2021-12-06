@@ -5,7 +5,7 @@
     <application
     	android:hasCode="false"
     	android:label="@string/overlay_name"
-    	android:extractNativeLibs="false" />
+    	android:extractNativeLibs="true" />
 
     <overlay
     	android:targetPackage="com.android.settings"

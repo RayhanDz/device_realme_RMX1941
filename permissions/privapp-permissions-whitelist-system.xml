@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<permissions>
+    <privapp-permissions package="com.dot.packageinstaller">
+        <permission name="android.permission.PACKAGE_USAGE_STATS" />
+        <permission name="android.permission.UPDATE_APP_OPS_STATS"/>
+        <permission name="android.permission.MANAGE_USERS"/>
+        <permission name="android.permission.DELETE_PACKAGES"/>
+        <permission name="android.permission.USE_RESERVED_DISK"/>
+        <permission name="android.permission.SUBSTITUTE_NOTIFICATION_APP_NAME"/>
+        <permission name="android.permission.INSTALL_PACKAGES"/>
+    </privapp-permissions>
+    <privapp-permissions package="com.android.wallpaper">
+        <permission name="android.permission.WRITE_SECURE_SETTINGS" />
+        <permission name="android.permission.SET_WALLPAPER_COMPONENT"/>
+        <permission name="android.permission.CHANGE_OVERLAY_PACKAGES"/>
+    </privapp-permissions>
+    <privapp-permissions package="org.omnirom.logcat">
+        <permission name="android.permission.READ_LOGS" />
+    </privapp-permissions>
+    <privapp-permissions package="com.mediatek.ims">
+        <permission name="android.permission.UPDATE_DEVICE_STATS" />
+        <permission name="android.permission.READ_PRECISE_PHONE_STATE"/>
+        <permission name="android.permission.READ_NETWORK_USAGE_HISTORY"/>
+        <permission name="android.permission.PACKET_KEEPALIVE_OFFLOAD"/>
+        <permission name="android.permission.CHANGE_WIFI_STATE"/>
+        <permission name="android.permission.NETWORK_SIGNAL_STRENGTH_WAKEUP"/>
+    </privapp-permissions>
+    <privapp-permissions package="com.google.android.packageinstaller">
+        <permission name="android.permission.PACKAGE_USAGE_STATS"/>
+		<permission name="android.permission.DELETE_PACKAGES"/>
+		<permission name="android.permission.SUBSTITUTE_NOTIFICATION_APP_NAME"/>
+		<permission name="android.permission.INSTALL_PACKAGES"/>
+		<permission name="android.permission.MANAGE_USERS"/>
+		<permission name="android.permission.UPDATE_APP_OPS_STATS"/>
+		<permission name="android.permission.USE_RESERVED_DISK"/>
+    </privapp-permissions>
+	<privapp-permissions package="com.android.customization">
+		<permission name="android.permission.WRITE_SECURE_SETTINGS"/>
+		<permission name="android.permission.CHANGE_OVERLAY_PACKAGES"/>
+		<permission name="android.permission.SET_WALLPAPER_COMPONENT"/>
+    </privapp-permissions>
+	<privapp-permissions package="com.custom.ambient.display">
+		<permission name="android.permission.INTERACT_ACROSS_USERS"/>
+    </privapp-permissions>
+	<privapp-permissions package="com.android.omadm.service">
+		<permission name="android.permission.CONNECTIVITY_USE_RESTRICTED_NETWORKS"/>
+		<permission name="android.permission.CHANGE_CONFIGURATION"/>
+		<permission name="android.permission.READ_PRIVILEGED_PHONE_STATE"/>
+		<permission name="android.permission.START_ACTIVITIES_FROM_BACKGROUND"/>
+		<permission name="android.permission.WRITE_APN_SETTINGS"/>
+		<permission name="android.permission.WRITE_SECURE_SETTINGS"/>
+		<permission name="android.permission.MODIFY_PHONE_STATE"/>
+		<permission name="android.permission.CONNECTIVITY_INTERNAL"/>
+    </privapp-permissions>
+    <privapp-permissions package="com.android.systemui">
+        <permission name="android.permission.MANAGE_FINGERPRINT"/>
+		<permission name="android.permission.WRITE_SECURE_SETTINGS"/>
+		<permission name="android.permission.CHANGE_OVERLAY_PACKAGES"/>
+		<permission name="android.permission.SET_WALLPAPER_COMPONENT"/>
+		<permission name="android.permission.UPDATE_STATS"/>
+		<permission name="android.permission.PACKAGE_USAGE_STATS"/>
+		<permission name="android.permission.FORCE_STOP_PACKAGES"/>
+    </privapp-permissions>
+    <privapp-permissions package="com.android.launcher3">
+        <permission name="android.permission.INTERACT_ACROSS_USERS"/>
+		<permission name="android.permission.MANAGE_USERS"/>
+		<permission name="android.permission.FORCE_STOP_PACKAGES"/>
+		<permission name="android.permission.BIND_APPWIDGET"/>
+		<permission name="android.permission.WRITE_SECURE_SETTINGS"/>
+		<permission name="android.permission.CONTROL_REMOTE_APP_TRANSITION_ANIMATIONS"/>
+		<permission name="android.permission.PACKAGE_USAGE_STATS"/>
+		<permission name="android.permission.STATUS_BAR"/>
+		<permission name="android.permission.MEDIA_CONTENT_CONTROL"/>
+    </privapp-permissions>
+	<privapp-permissions package="com.custom.ambient.display">
+		<permission name="android.permission.INTERACT_ACROSS_USERS"/>
+    </privapp-permissions>
+	<privapp-permissions package="com.android.settings">
+		<permission name="android.permission.ACCESS_FONT_MANAGER"/>
+    </privapp-permissions>
+</permissions>

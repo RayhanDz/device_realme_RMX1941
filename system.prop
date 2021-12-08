@@ -15,9 +15,6 @@ ro.charger.enable_suspend=true
 # Camera
 persist.camera.HAL3.enabled=1
 
-# Zygote preforking
-persist.device_config.runtime_native.usap_pool_enabled=true
-
 # SurfaceFlinger
 debug.sf.latch_unsignaled=1
 ro.surface_flinger.has_HDR_display=true

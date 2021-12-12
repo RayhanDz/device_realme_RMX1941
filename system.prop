@@ -80,9 +80,6 @@ persist.service.adb.enable=1
 persist.service.debuggable=1
 persist.sys.usb.config=mtp,adb
 
-# Navigation Bar
-qemu.hw.mainkeys=0
-
 # Iorap
 iorapd.perfetto.enable=true
 iorapd.readahead.enable=true

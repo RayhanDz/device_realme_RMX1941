@@ -1,6 +1,8 @@
 #This is in Android 8.0, but not 8.1
 domain_trans(init, rootfs, adbd)
 
+# Allow init to create socket_device(s)
+allow init socket_device:sock_file create_file_perms;
 allow vendor_init vendor_init:capability { sys_module };
 
 # Allow init to mount vendor overlay

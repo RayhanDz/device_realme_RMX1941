@@ -22,4 +22,7 @@
     <dimen name="status_bar_padding_top">5dp</dimen>
     <dimen name="status_bar_padding_start">10dp</dimen>
     <dimen name="status_bar_padding_end">10dp</dimen>
+	
+    <!-- Margin on the right side of the system icon group on Keyguard. -->
+    <dimen name="system_icons_keyguard_padding_end">@dimen/status_bar_padding_end</dimen>
 </resources>

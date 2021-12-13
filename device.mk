@@ -183,7 +183,7 @@ PRODUCT_PACKAGES += \
 
 # Lights
 PRODUCT_PACKAGES += \
-    android.hardware.light@2.0-service.RMX1941
+    android.hardware.light@2.0-service.mediatek
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \

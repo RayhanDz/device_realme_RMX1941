@@ -150,7 +150,7 @@ on boot
 
     # DT2W
     chown system system /proc/touchpanel/double_tap_enable
-    chmod 0644 /proc/touchpanel/double_tap_enable
+    chmod 0777 /proc/touchpanel/double_tap_enable
     write /proc/touchpanel/double_tap_enable 1
 
     # ZRAM

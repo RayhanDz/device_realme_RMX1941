@@ -17,8 +17,6 @@ persist.camera.HAL3.enabled=1
 
 # SurfaceFlinger
 debug.sf.latch_unsignaled=0
-ro.surface_flinger.has_HDR_display=true
-ro.surface_flinger.has_wide_color_display=true
 ro.surface_flinger.max_frame_buffer_acquired_buffers=3
 ro.surface_flinger.running_without_sync_framework=true
 ro.surface_flinger.vsync_event_phase_offset_ns=2000000
@@ -91,7 +89,4 @@ persist.sys.binary_xml=false
 # Hardware Acceleration
 video.accelerate.hw=1 
 debug.sf.hw=1 
-debug.performance.tuning=1 
-debug.egl.profiler=1 
-debug.egl.hw=1 
-debug.composition.type=gpu
+debug.performance.tuning=1

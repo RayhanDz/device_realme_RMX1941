@@ -70,11 +70,6 @@ service prop-adap-core /vendor/bin/self-init core
     user root
     oneshot
     seclabel u:r:rutilsdaemon:s0
-service prop-adap-main /vendor/bin/self-init main
-    class main
-    user root
-    oneshot
-    seclabel u:r:rutilsdaemon:s0
 service media-resource-reconciliation /vendor/bin/self-init reconcile_media_resource
     user root
     oneshot
@@ -118,13 +113,7 @@ on post-fs-data
     chmod 0666 /dev/pmem_multimedia
 	
     #Accdet
-    chown root radio /sys/devices/platform/Accdet_Driver/driver/accdet_call_state
-	
-    #Fingerprint
-    chmod 0666 /dev/goodix_fp
-	
-    #kpd
-    chown radio radio /sys/devices/platform/mtk-kpd/driver/kpd_call_state
+    chown root radio /sys/devices/platform/Accdet/driver/accdet_call_state
 
     #VOW
     chmod 0640 /dev/vow

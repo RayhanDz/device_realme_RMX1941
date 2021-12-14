@@ -155,7 +155,7 @@ PRODUCT_PACKAGES += \
     libhidltransport \
     libhidltransport.vendor \
     libhwbinder \
-    libhwbinder.vendor
+    libhwbinder.vendor \
 	vendor.lineage.trust@1.0-service
 
 # IMS

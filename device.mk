@@ -39,7 +39,7 @@ $(call inherit-product-if-exists, packages/apps/RealmeParts/parts.mk)
 # Keep this after including updatable_apex.mk
 PRODUCT_COMPRESSED_APEX := false
 
-PRODUCT_SHIPPING_API_LEVEL := 29
+PRODUCT_SHIPPING_API_LEVEL := 28
 
 # VNDK
 PRODUCT_EXTRA_VNDK_VERSIONS := 29

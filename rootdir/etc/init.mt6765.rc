@@ -132,7 +132,6 @@ on boot
     # Services
     stop console
 
-on boot
     # Toggle airplane mode on and off on boot to enable volte.
     # This hack needs ImsInit commit to request ims on boot to work properly
 
@@ -144,8 +143,6 @@ on boot
     exec - root -- /system/bin/sh -c "am broadcast -a android.intent.action.AIRPLANE_MODE --ez state false"
 	
     # INPUT
-    chown system input /dev/input/event0
-    chown system input /dev/input/event1
     chown system input /dev/input/event2
 
     # DT2W

@@ -48,6 +48,9 @@ PRODUCT_EXTRA_VNDK_VERSIONS := 29
 TARGET_SCREEN_HEIGHT := 1560
 TARGET_SCREEN_WIDTH := 720
 
+# Always preopt extracted APKs to prevent extracting out of the APK for gms modules.
+PRODUCT_ALWAYS_PREOPT_EXTRACTED_APK := true
+
 # Audio
 PRODUCT_PACKAGES += \
     audio.a2dp.default \

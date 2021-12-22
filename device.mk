@@ -229,6 +229,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     init.recovery.mt6765.rc
 	
+# Reduce system image size by limiting java debug info.
+PRODUCT_MINIMIZE_JAVA_DEBUG_INFO := true
+	
 # Screen density
 PRODUCT_AAPT_CONFIG := xxhdpi
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi

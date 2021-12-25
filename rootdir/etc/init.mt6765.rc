@@ -193,9 +193,9 @@ on property:sys.boot_completed=1
     chown root root /proc/cpufreq/cpufreq_power_mode
     chown root root /proc/cpufreq/cpufreq_cci_mode
 	
-    start set_zram
+    start /system/bin/perf_profile.sh
 	
-	start perf_profile
+	start /system/bin/set_zram.sh
 	
 	# Enable ZRAM
     swapon_all /system/etc/fstab.mt6765

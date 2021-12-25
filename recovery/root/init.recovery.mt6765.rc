@@ -5,3 +5,12 @@ service init-recovery-mt6765-sh /init.recovery.mt6765.sh
     user root
     group root
     seclabel u:r:recovery:s0
+	
+on fs
+
+service erase_para /system/bin/dd if=/dev/null of=/dev/block/bootdevice/by-name/para
+    user root
+    group root
+    disabled
+    seclabel u:r:recovery:s0
+    oneshot

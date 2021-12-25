@@ -32,6 +32,8 @@ lib64/libmtkshifter.so
 lib64/libvcodec_cap.so
 lib64/libvcodec_capenc.so
 
+-priv-app/ImsService/ImsService.apk
+
 # MTK-IMS | From bomb RP1A.200720.011 release-keys
 lib/libcomutils.so|be7c7b0901119cb260186061b90ef5b6a8292ae2
 lib/libimsma.so|c9e524600acb37296d7c73aa9db56d21e1a88d5b

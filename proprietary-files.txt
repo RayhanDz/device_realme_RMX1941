@@ -12,6 +12,9 @@ lib64/libaptXHD_encoder.so
 vendor/lib/libdpframework.so:product/vendor_overlay/29/lib/libdpframework.so
 vendor/lib64/libdpframework.so:product/vendor_overlay/29/lib64/libdpframework.so
 
+# CarrierConfig
+-priv-app/MtkCarrierConfig/MtkCarrierConfig.apk
+
 # Engineering Mode
 -priv-app/EngineerMode/EngineerMode.apk
 lib/libem_support_jni.so
@@ -69,6 +72,16 @@ permissions/privapp-permissions-whitelist-system_ext.xml
 
 # Soter
 -app/SoterService/SoterService.apk
+
+# TeeService
+lib/libTeeServiceJni.so
+lib/libTeeClient.so
+lib/libteeservice_client.trustonic.so
+lib64/libTeeServiceJni.so
+lib64/libTeeClient.so
+lib64/libteeservice_client.trustonic.so
+priv-app/TeeService/lib/arm64/libTeeServiceJni.so
+-priv-app/TeeService/TeeService.apk
 
 
 

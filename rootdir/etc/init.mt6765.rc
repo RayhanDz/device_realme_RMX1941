@@ -170,14 +170,14 @@ service face_hal /system/bin/true
     oneshot
     disabled
 
-service set_zram /vendor/bin/sh /system/etc/init/set_zram.sh
+service set_zram /vendor/bin/sh /system/bin/set_zram.sh
     class late_start
     disabled
     user root
     group system
     oneshot
 	
-service perf_profile /vendor/bin/sh /system/etc/init/perf_profile.sh
+service perf_profile /vendor/bin/sh /system/bin/perf_profile.sh
     class late_start
     disabled
     user root

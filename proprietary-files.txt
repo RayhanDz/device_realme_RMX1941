@@ -8,6 +8,10 @@ etc/apns-conf.xml:product/etc/apns-conf.xml
 lib64/libaptX_encoder.so
 lib64/libaptXHD_encoder.so
 
+# Camera
+vendor/lib/libdpframework.so:product/vendor_overlay/29/lib/libdpframework.so
+vendor/lib64/libdpframework.so:product/vendor_overlay/29/lib64/libdpframework.so
+
 # Engineering Mode
 -priv-app/EngineerMode/EngineerMode.apk
 lib/libem_support_jni.so

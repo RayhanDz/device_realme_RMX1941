@@ -4,6 +4,11 @@ vendor/lib64/libadsprpc.so
 # APNs
 etc/apns-conf.xml:product/etc/apns-conf.xml
 
+# Engineering Mode
+-priv-app/EngineerMode/EngineerMode.apk
+lib/libem_support_jni.so
+lib64/libem_support_jni.so
+
 # Kernel Power Offline Charging (KPOC)
 bin/kpoc_charger
 etc/init/kpoc_charger.rc

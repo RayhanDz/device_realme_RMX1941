@@ -20,6 +20,18 @@ vendor/lib64/libdpframework.so:product/vendor_overlay/29/lib64/libdpframework.so
 lib/libem_support_jni.so
 lib64/libem_support_jni.so
 
+# framework
+-framework/mediatek-wfo-legacy.jar
+-framework/mediatek-ims-legacy.jar
+-framework/mediatek-ims-extension-plugin.jar
+-/mediatek-framework.jar
+-framework/mediatek-common.jar
+-framework/mediatek-ims-base.jar
+-framework/mediatek-ims-common.jar
+-framework/mediatek-telecom-common.jar
+-framework/mediatek-telephony-base.jar
+-framework/mediatek-telephony-common .jar
+
 # Kernel Power Offline Charging (KPOC)
 bin/kpoc_charger
 etc/init/kpoc_charger.rc

@@ -24,7 +24,7 @@ lib64/libem_support_jni.so
 -framework/mediatek-wfo-legacy.jar
 -framework/mediatek-ims-legacy.jar
 -framework/mediatek-ims-extension-plugin.jar
--/mediatek-framework.jar
+-framework/mediatek-framework.jar
 -framework/mediatek-common.jar
 -framework/mediatek-ims-base.jar
 -framework/mediatek-ims-common.jar

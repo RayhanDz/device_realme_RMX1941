@@ -14,14 +14,14 @@
 # limitations under the License.
 #
 
-DEVICE_PATH := device/realme/RMX1941
+DEVICE_PATH := device/realme/RMX2185
 ALLOW_MISSING_DEPENDENCIES := true
 
 # Installs gsi keys into ramdisk, to boot a developer GSI with verified boot.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/developer_gsi_keys.mk)
 
 # Call proprietary blob setup
-$(call inherit-product, vendor/realme/RMX1941/RMX1941-vendor.mk)
+$(call inherit-product, vendor/realme/RMX2185/RMX2185-vendor.mk)
 
 # Enable updating of APEXes
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
@@ -39,10 +39,14 @@ $(call inherit-product-if-exists, packages/apps/RealmeParts/parts.mk)
 # Keep this after including updatable_apex.mk
 PRODUCT_COMPRESSED_APEX := false
 
-PRODUCT_SHIPPING_API_LEVEL := 28
+PRODUCT_SHIPPING_API_LEVEL := 29
 
 # VNDK
 PRODUCT_EXTRA_VNDK_VERSIONS := 29
+
+# Dynamic Partition
+PRODUCT_USE_DYNAMIC_PARTITIONS := true
+PRODUCT_BUILD_SUPER_PARTITION := false
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1560
@@ -100,6 +104,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     fastbootd
 	
+# Fingerprint
+PRODUCT_PACKAGES += \
+    android.hardware.biometrics.fingerprint@2.1-service.RMX2185
+	
 # DRM
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-impl \
@@ -132,10 +140,12 @@ PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/permissions/privapp-permissions-whitelist-product.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-whitelist-product.xml \
     $(DEVICE_PATH)/permissions/platform.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/platform.xml \
     frameworks/native/data/etc/android.hardware.audio.low_latency.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.hardware.audio.low_latency.xml \
+    frameworks/native/data/etc/android.hardware.audio.low_latency.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.hardware.audio.low_latency.xml \
     frameworks/native/data/etc/android.hardware.bluetooth.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.hardware.bluetooth.xml \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.hardware.bluetooth_le.xml \
     frameworks/native/data/etc/android.hardware.camera.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.hardware.camera.xml \
     frameworks/native/data/etc/android.hardware.faketouch.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.hardware.faketouch.xml \
+    frameworks/native/data/etc/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.hardware.fingerprint.xml \
     frameworks/native/data/etc/android.hardware.location.gps.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.hardware.location.gps.xml \
     frameworks/native/data/etc/android.hardware.opengles.aep.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.hardware.opengles.aep.xml \
     frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.hardware.sensor.accelerometer.xml \
@@ -191,6 +201,7 @@ PRODUCT_PACKAGES += \
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/keylayout/mtk-kpd.idc:$(TARGET_COPY_OUT_SYSTEM)/usr/idc/mtk-kpd.idc \
     $(DEVICE_PATH)/keylayout/mtk-kpd.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/mtk-kpd.kl \
     $(DEVICE_PATH)/keylayout/touchpanel.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/touchpanel.kl
 
@@ -201,7 +212,11 @@ PRODUCT_PACKAGES += \
 
 # Lights
 PRODUCT_PACKAGES += \
-    android.hardware.light@2.0-service.mediatek
+    android.hardware.light@2.0-service.RMX2185
+	
+# LiveDisplay
+PRODUCT_PACKAGES += \
+    lineage.livedisplay@2.0-service-RMX2185
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
@@ -210,6 +225,11 @@ DEVICE_PACKAGE_OVERLAYS += \
 PRODUCT_PACKAGES += \
     NotchBarKiller \
     BatteryHealthOverlay 
+	
+PRODUCT_PACKAGES += \
+    RMX2180_overlay \
+    RMX2185_overlay \
+    RMX2189_overlay
 
 # Power
 PRODUCT_PACKAGES += \
@@ -250,6 +270,11 @@ PRODUCT_SOONG_NAMESPACES += $(DEVICE_PATH)
 # Symbols
 PRODUCT_PACKAGES += \
     libshim_showlogo
+	
+# ThemePicker
+PRODUCT_PACKAGES += \
+    ThemePicker \
+    messaging
 	
 # USB
 PRODUCT_PACKAGES += \

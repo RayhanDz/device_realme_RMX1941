@@ -15,13 +15,13 @@
 //
 
 cc_library_static {
-    name: "libinit_RMX1941",
+    name: "libinit_RMX2185",
     recovery_available: true,
     whole_static_libs: ["libbase"],
     header_libs: [
         "libbase_headers",
     ],
-    srcs: ["init_RMX1941.cpp"],
+    srcs: ["init_RMX2185.cpp"],
     include_dirs: [
         "system/core/init"
     ]

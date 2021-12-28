@@ -16,6 +16,6 @@
 
 LOCAL_PATH := $(call my-dir)
 
-ifeq ($(TARGET_DEVICE),RMX1941)
+ifeq ($(TARGET_DEVICE),RMX2185)
 include $(call all-makefiles-under,$(LOCAL_PATH))
 endif

@@ -21,8 +21,8 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Inherit some common NusantaraROM stuff.
 $(call inherit-product, vendor/nusantara/config/common_full_phone.mk)
 
-# Inherit from RMX1941 device makefile
-$(call inherit-product, device/realme/RMX1941/device.mk)
+# Inherit from RMX2185 device makefile
+$(call inherit-product, device/realme/RMX2185/device.mk)
 
 # NusantaraProject stuff
 TARGET_INCLUDE_PIXEL_CHARGER := true
@@ -30,8 +30,8 @@ TARGET_BOOT_ANIMATION_RES := 720
 ALLOW_MISSING_DEPENDENCIES=true
 
 # Device identifier. This must come after all inclusions
-PRODUCT_DEVICE := RMX1941
-PRODUCT_NAME := nad_RMX1941
+PRODUCT_DEVICE := RMX2185
+PRODUCT_NAME := nad_RMX2185
 PRODUCT_BRAND := realme
 PRODUCT_MODEL := Realme C2
 PRODUCT_MANUFACTURER := realme
@@ -39,8 +39,8 @@ PRODUCT_RELEASE_NAME := Realme C2
 
 # Build info
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    TARGET_DEVICE=RMX1941 \
-    PRODUCT_NAME=RMX1941 \
+    TARGET_DEVICE=RMX2185 \
+    PRODUCT_NAME=RMX2185 \
     PRIVATE_BUILD_DESC="full_oppo6762-user 10 QP1A.190711.020 bedd37e98646d3a1 release-keys"
 
 # Build FP

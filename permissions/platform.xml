@@ -60,8 +60,8 @@
         <group gid="log" />
     </permission>
 
-    <permission name="android.permission.MANAGE_EXTERNAL_STORAGE" >
-        <group gid="external_storage" />
+    <permission name="android.permission.WRITE_MEDIA_STORAGE" >
+        <group gid="media_rw" />
     </permission>
 
     <permission name="android.permission.ACCESS_MTP" >
@@ -70,11 +70,6 @@
 
     <permission name="android.permission.NET_ADMIN" >
         <group gid="net_admin" />
-    </permission>
-
-    <permission name="android.permission.MAINLINE_NETWORK_STACK" >
-        <group gid="net_admin" />
-        <group gid="net_raw" />
     </permission>
 
     <!-- The group that /cache belongs to, linked to the permission
@@ -116,6 +111,15 @@
         <group gid="media" />
     </permission>
 
+    <!-- #ifdef COLOROS_EDIT -->
+    <!-- chaochun.shuai@Plf.Framework, 2017.08.15: add for launcher read data engineermode dir -->
+    <!-- Bin.Wang@Plf.Framework, 2018.05.18: add for allow app to read /data/oppo/common/sau_res -->
+    <permission name="oppo.permission.OPPO_COMPONENT_SAFE">
+        <group gid="launcher" />
+        <group gid="saures" />
+    </permission>
+    <!-- #endif //COLOROS_EDIT -->
+
     <permission name="android.permission.USE_RESERVED_DISK">
         <group gid="reserved_disk" />
     </permission>
@@ -133,9 +137,13 @@
          no longer needs to be mapped to gids and break grant propagation. -->
     <permission name="android.permission.READ_EXTERNAL_STORAGE" />
     <permission name="android.permission.WRITE_EXTERNAL_STORAGE" />
-        <group gid="sdcard_r" />
-        <group gid="sdcard_rw" />
-        <group gid="media_rw" /> 
+
+    <!-- #ifdef COLOROS_EDIT -->
+    <!-- Bin.Wang@Plf.Framework, 2017/07/07, Add for system app read proc info-->
+    <permission name="oppo.permission.READ_PROC" >
+        <group gid="readproc" />
+    </permission>
+    <!-- #endif //COLOROS_EDIT -->
 
     <!-- ================================================================== -->
     <!-- ================================================================== -->
@@ -174,7 +182,6 @@
     <assign-permission name="android.permission.GET_PROCESS_STATE_AND_OOM_SCORE" uid="cameraserver" />
     <assign-permission name="android.permission.PACKAGE_USAGE_STATS" uid="cameraserver" />
     <assign-permission name="android.permission.WATCH_APPOPS" uid="cameraserver" />
-    <assign-permission name="android.permission.MANAGE_APP_OPS_MODES" uid="cameraserver" />
 
     <assign-permission name="android.permission.ACCESS_SURFACE_FLINGER" uid="graphics" />
 
@@ -182,26 +189,21 @@
     <assign-permission name="android.permission.PACKAGE_USAGE_STATS" uid="incidentd" />
     <assign-permission name="android.permission.INTERACT_ACROSS_USERS" uid="incidentd" />
     <assign-permission name="android.permission.REQUEST_INCIDENT_REPORT_APPROVAL" uid="incidentd" />
-    <assign-permission name="android.permission.PEEK_DROPBOX_DATA" uid="incidentd" />
 
     <assign-permission name="android.permission.ACCESS_LOWPAN_STATE" uid="lowpan" />
     <assign-permission name="android.permission.MANAGE_LOWPAN_INTERFACES" uid="lowpan" />
 
+    <assign-permission name="android.permission.BATTERY_STATS" uid="statsd" />
     <assign-permission name="android.permission.DUMP" uid="statsd" />
     <assign-permission name="android.permission.PACKAGE_USAGE_STATS" uid="statsd" />
     <assign-permission name="android.permission.STATSCOMPANION" uid="statsd" />
     <assign-permission name="android.permission.UPDATE_APP_OPS_STATS" uid="statsd" />
-
-    <assign-permission name="android.permission.REGISTER_STATS_PULL_ATOM" uid="gpu_service" />
 
     <split-permission name="android.permission.ACCESS_FINE_LOCATION">
         <new-permission name="android.permission.ACCESS_COARSE_LOCATION" />
     </split-permission>
     <split-permission name="android.permission.WRITE_EXTERNAL_STORAGE">
         <new-permission name="android.permission.READ_EXTERNAL_STORAGE" />
-    </split-permission>
-    <split-permission name="android.permission.READ_PRIVILEGED_PHONE_STATE">
-        <new-permission name="android.permission.READ_PHONE_STATE" />
     </split-permission>
     <split-permission name="android.permission.READ_CONTACTS"
                       targetSdk="16">
@@ -246,16 +248,39 @@
     <!-- These are the standard packages that are white-listed to always have internet
          access while in power save mode, even if they aren't in the foreground. -->
     <allow-in-power-save package="com.android.providers.downloads" />
+    <allow-in-power-save package="com.google.android.gms" />
+    <allow-in-power-save-except-idle package="com.android.vending" />
+
+    <!-- #ifdef COLOROS_EDIT -->
+    <!-- GuoDong.Huang@Rom.Framework, 2018/08/18, Add for add Doze whitelist-->
+    <allow-in-power-save package="com.android.providers.media" />
+    <!-- #endif //COLOROS_EDIT -->
 
     <!-- These are the standard packages that are white-listed to always have internet
          access while in data mode, even if they aren't in the foreground. -->
     <allow-in-data-usage-save package="com.android.providers.downloads" />
 
     <!-- This is a core platform component that needs to freely run in the background -->
-    <allow-in-power-save package="com.android.cellbroadcastreceiver.module" />
     <allow-in-power-save package="com.android.cellbroadcastreceiver" />
     <allow-in-power-save package="com.android.shell" />
 
+    <!-- #ifdef COLOROS_EDIT -->
+    <!-- GuoDong.Huang@Rom.Framework, 2018/03/14, Add for add fbns to Doze whitelist-->
+    <allow-in-power-save package="com.facebook.services" />
+    <!-- #endif //COLOROS_EDIT -->
+
+    <!-- #ifdef COLOROS_EDIT -->
+    <!-- GuoDong.Huang@Rom.Framework, 2018/04/26, Add for add singtel carrier app to Doze whitelist-->
+    <allow-in-power-save package="com.LogiaGroup.LogiaDeck" />
+    <!-- #endif //COLOROS_EDIT -->
+
+    <!-- #ifdef COLOROS_EDIT -->
+    <!-- GuoDong.Huang@Rom.Framework, 2018/04/28, Add for add Japan nfc apps to Doze whitelist-->
+    <allow-in-power-save package="com.felicanetworks.mfc" />
+    <allow-in-power-save package="com.felicanetworks.mfs" />
+    <allow-in-power-save package="com.felicanetworks.mfw.a.boot" />
+    <allow-in-power-save package="com.felicanetworks.mfm" />
+    <!-- #endif //COLOROS_EDIT -->
     <!-- Whitelist system providers -->
     <allow-in-power-save-except-idle package="com.android.providers.calendar" />
     <allow-in-power-save-except-idle package="com.android.providers.contacts" />
@@ -265,11 +290,14 @@
          all outgoing connections originate from this app. -->
     <allow-in-power-save-except-idle package="com.android.proxyhandler" />
 
+    <!-- #ifdef COLOROS_EDIT -->
+    <!-- Binhu.Yang@Rom.Framework, 2018/12/04, Add for facebook to power save except idle whitelist-->
+    <allow-in-power-save-except-idle package="com.facebook.appmanager" />
+    <!-- #endif //COLOROS_EDIT -->
+
     <!-- These are the packages that are white-listed to be able to run as system user -->
     <system-user-whitelisted-app package="com.android.settings" />
 
     <!-- These are the packages that shouldn't run as system user -->
     <system-user-blacklisted-app package="com.android.wallpaper.livepicker" />
-
-    <allow-in-power-save package="com.google.android.gms"/>
 </permissions>

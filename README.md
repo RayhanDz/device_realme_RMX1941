@@ -1,18 +1,25 @@
-## Device specifications 
+Realme C11/C12/C15 Device Tree - RMX2185/RMX2189/RMX2180
+================================================================
+
 
 Basic   | Spec Sheet
 -------:|:-------------------------
-RELEASE	| Android 9.0 (pie)	
-CPU     | Octa-core 2.0 GHz Cortex-A53
-Chipset | Mediatek MT6762 Helio P22 (12 nm)
+CPU     | Octa-core (4x2.3 GHz Cortex-A53 & 4x1.8 GHz Cortex-A53)
+Chipset | MediaTek Helio G35 (12 nm)
 GPU     | PowerVR GE8320
-Memory  | 2GB/3GB RAM
-Storage | 16GB/32GB
-MicroSD | up to 64 GB (dedicated slot)
-Battery | Non-removable Li-Ion 4000 mAh battery
-Resolution | 720 x 1560 pixels, 19.5:9 ratio (~282 ppi density)
-Camera (Rear)  | 13 MP, f/2.2, 1/3.1", 1.12µm, PDAF & 2 MP, f/2.4, (depth)
-Rear Camera Features | LED flash, HDR, panorama
-Video	| 1080p@30fps	
-Camera (Front)  | 5 MP, f/2.0, 1/5", 1.12µm
-Features| Accelerometer, proximity, compass	
+Memory  | 2/3/4 GB
+Shipped Android Version | Android 10, realme UI 1.0 
+Storage | 32/64 GB (eMMC type)
+MicroSD | Up to 512 GB 
+Battery | Li-Po 5000 mAh (RMX2185)/ 6000 mAh (RMX2180 & RMX2185), non-removable
+Dimensions | 164.5 x 75.9 x 9.8 mm (6.48 x 2.99 x 0.39 in)
+Display | 720 x 1560 pixels, 6.50" IPS LCD, 19.5:9 ratio (~264 ppi density)
+Rear Camera 1 | 13 MP, f/2.2, (wide), PDAF
+Rear Camera 2 | 2 MP B/W, f/2.4
+Rear Camera 3 | 2 MP, f/2.4
+Front Camera | 5 MP, f/2.0, (wide)
+Release Month | 2020, June 30 (RMX2185), 2020, August 14 (RMX2189), 2020, July 28 (RMX2180) 
+
+![Realme C12](https://fdn2.gsmarena.com/vv/pics/realme/realme-c12-2.jpg "Realme C12")
+
+Copyright (C) 2021 Lineage OS

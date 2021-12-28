@@ -3,6 +3,7 @@
     <version>20200118</version>
     <isOpen>1</isOpen>
     <filter-name>lbs_config</filter-name>
+    <Android-Version>10</Android-Version>
 
     <string-array name="config_gpsBackgroudRunningApp">
         <item>com.google.android.gms</item>
@@ -273,6 +274,16 @@
         <item>com.android.server.cts.device.statsd</item>
         <item>com.android.server.cts.device.batterystats</item>
         <item>com.sankuai.meituan.dispatch.homebrew</item>
+        <item>com.duoduo.vip.taxi</item>
+        <item>cn.edaijia.android.driverclient</item>
+        <item>com.hn.client.driver</item>
+        <item>com.joyskim.taxis_driver</item>
+        <item>com.anyimob.taxi</item>
+        <item>com.eastedge.taxidriverforpad</item>
+        <item>com.sankuai.meituan.meituanwaimaibusiness</item>
+        <item>com.cx</item>
+        <item>com.sankuai.meituan.dispatch.crowdsource</item>
+        <item>me.ele.crowdsource</item>
     </string-array>
 
     <string-array name="config_gpsForegroudRunningApp">
@@ -295,7 +306,6 @@
         <item>org.cocos2d.fishingjoy3</item>
         <item>org.cocos2dx.FishingJoy2</item>
         <item>com.szgd.GodBeastKingKong.nearme.gamecenter</item>
-		<item>com.ZJMCCMCRM</item>
     </string-array>
 
     <integer-array name="config_withNlpMccList">
@@ -344,7 +354,6 @@
         <item>com.oppo.engineermode</item>
         <item>com.starriver.gnsstester</item>
         <item>com.mediatek.ygps</item>
-		<item>jp.test.lbs</item>
     </string-array>
 
     <!-- parameter for inject time Whitelist -->
@@ -621,6 +630,16 @@
         <item>fi.polar.polarflow</item>
         <item>com.heytap.health</item>
         <item>com.sankuai.meituan.dispatch.homebrew</item>
+        <item>com.duoduo.vip.taxi</item>
+        <item>cn.edaijia.android.driverclient</item>
+        <item>com.hn.client.driver</item>
+        <item>com.joyskim.taxis_driver</item>
+        <item>com.anyimob.taxi</item>
+        <item>com.eastedge.taxidriverforpad</item>
+        <item>com.sankuai.meituan.meituanwaimaibusiness</item>
+        <item>com.cx</item>
+        <item>com.sankuai.meituan.dispatch.crowdsource</item>
+        <item>me.ele.crowdsource</item>
     </string-array>
 
     <!-- parameter for gnss power saver -->
@@ -718,40 +737,6 @@
         <item>LPP_PROFILE=3</item>
         <item>USE_EMERGENCY_PDN_FOR_EMERGENCY_SUPL=1</item>
         <item>A_GLONASS_POS_PROTOCOL_SELECT=15</item>
-        <item>GPS_LOCK=0</item>
-    </string-array>
-
-   <string-array name="config_suplConfig_44020">
-        <item>CONFIG_NAME=JapanSoftBank</item>
-        <item>SUPL_REGION=0</item>
-        <item>SUPL_SWITCH=1</item>
-        <item>SUPL_CARRIER=44020</item>
-        <item>SUPL_HOST=supl.google.com</item>
-        <item>SUPL_PORT=7275</item>
-        <item>SUPL_VER=0x20000</item>
-        <item>SUPL_MODE=1</item>
-        <item>SUPL_ES=0</item>
-        <item>LPP_PROFILE=0</item>
-        <item>USE_EMERGENCY_PDN_FOR_EMERGENCY_SUPL=0</item>
-        <item>ES_EXTENSION_SE=300</item>
-        <item>A_GLONASS_POS_PROTOCOL_SELECT=0</item>
-        <item>GPS_LOCK=0</item>
-    </string-array>
-
-   <string-array name="config_suplConfig_44051">
-        <item>CONFIG_NAME=JapanKddi</item>
-        <item>SUPL_REGION=0</item>
-        <item>SUPL_SWITCH=1</item>
-        <item>SUPL_CARRIER=44051</item>
-        <item>SUPL_HOST=supl.google.com</item>
-        <item>SUPL_PORT=7275</item>
-        <item>SUPL_VER=0x20000</item>
-        <item>SUPL_MODE=1</item>
-        <item>SUPL_ES=0</item>
-        <item>LPP_PROFILE=3</item>
-        <item>USE_EMERGENCY_PDN_FOR_EMERGENCY_SUPL=1</item>
-        <item>ES_EXTENSION_SE=300</item>
-        <item>A_GLONASS_POS_PROTOCOL_SELECT=0</item>
         <item>GPS_LOCK=0</item>
     </string-array>
 

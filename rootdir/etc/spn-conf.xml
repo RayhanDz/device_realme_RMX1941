@@ -5,7 +5,10 @@
 <spnOverride numeric="20209" spn="WIND"/>
 <spnOverride numeric="20210" spn="WIND"/>
 <spnOverride numeric="20402" spn="Tele2 NL"/>
-<spnOverride numeric="20404" spn="voda NL"/>
+<!--#ifdef ODM_WT_EDIT-->
+<!--Yulong.Liu@ODM_WT.NW.SIM.2805961, 2020/8/27, Change the operator 20404 name from "voda NL" to "vodafone NL" as requirement -->
+<spnOverride numeric="20404" spn="vodafone NL"/>
+<!--#endif ODM_WT_EDIT -->
 <spnOverride numeric="20408" spn="NL KPN"/>
 <spnOverride numeric="20412" spn="NL Tlfrt"/>
 <spnOverride numeric="20416" spn="TMO NL"/>
@@ -30,7 +33,10 @@
 <spnOverride numeric="20816" spn="Free"/>
 <spnOverride numeric="20817" spn="LEGOS"/>
 <spnOverride numeric="20818" spn="Voxbone"/>
-<spnOverride numeric="20820" spn="BYTEL"/>
+<!-- #ifdef ODM_HQ_EDIT -->
+<!-- shihaiguang@ODM_HQ.NW.IMS, 55020, 2020/08/31, DUT show BYTEL for Bouygues operator -->
+<spnOverride numeric="20820" spn="Bouygues Telecom"/>
+<!-- #endif ODM_HQ_EDIT -->
 <spnOverride numeric="20821" spn="Bouygues"/>
 <spnOverride numeric="20822" spn="Transate lMobile"/>
 <spnOverride numeric="20824" spn="MobiquiThings"/>
@@ -45,7 +51,10 @@
 <spnOverride numeric="21401" spn="voda ES"/>
 <spnOverride numeric="21403" spn="ESPRT"/>
 <spnOverride numeric="21404" spn="YOIGO"/>
-<spnOverride numeric="21405" spn="TME"/>
+<!-- #ifdef ODM_HQ_EDIT -->
+<!-- Hongjing.Dong@ODM_HQ.NW, ALM 48392, 2020/08/26, change from TME to Movistar -->
+<spnOverride numeric="21405" spn="Movistar"/>
+<!-- #endif ODM_HQ_EDIT -->
 <spnOverride numeric="21406" spn="Vodafone"/>
 <spnOverride numeric="21407" spn="Movistar"/>
 <spnOverride numeric="21408" spn="Euskaltel"/>
@@ -97,7 +106,10 @@
 <spnOverride numeric="22205" spn="Telespazio"/>
 <spnOverride numeric="22206" spn="Vodafone"/>
 <spnOverride numeric="22207" spn="Noverca"/>
-<spnOverride numeric="22210" spn="voda IT"/>
+<!-- #ifdef ODM_HQ_EDIT -->
+<!-- guliyun@ODM_HQ.Network.SPN 71828, 2020/09/24, modify spn name-->
+<spnOverride numeric="22210" spn="vodafone IT"/>
+<!-- #endif ODM_HQ_EDIT-->
 <spnOverride numeric="22230" spn="RFI"/>
 <spnOverride numeric="22233" spn="Poste Mobile"/>
 <spnOverride numeric="22234" spn="BT Italia"/>
@@ -305,13 +317,16 @@
 <spnOverride numeric="25902" spn="Moldcell"/>
 <spnOverride numeric="25905" spn="UNITE"/>
 <spnOverride numeric="25915" spn="IDC"/>
-<spnOverride numeric="26001" spn="PLUS"/>
+<!-- #ifdef ODM_HQ_EDIT -->
+<!-- lichen@ODM_HQ.NW.IMS, 95413, 2020/11/14, update PLUS to Plus -->
+<spnOverride numeric="26001" spn="Plus"/>
+<!-- #endif ODM_HQ_EDIT -->
 <spnOverride numeric="26002" spn="TM PL"/>
 <spnOverride numeric="26003" spn="Orange"/>
 <spnOverride numeric="26006" spn="Play"/>
 <spnOverride numeric="26034" spn="T-Mobile.pl"/>
-<spnOverride numeric="26201" spn="TDG"/>
-<spnOverride numeric="26202" spn="Vodafone"/>
+<spnOverride numeric="26201" spn="Telekom.de"/>
+<spnOverride numeric="26202" spn="Vodafone.de"/>
 <spnOverride numeric="26203" spn="o2 - de"/>
 <spnOverride numeric="26206" spn="Telekom.de"/>
 <spnOverride numeric="26207" spn="o2 - de"/>
@@ -319,7 +334,7 @@
 <spnOverride numeric="26601" spn="GIBTEL"/>
 <spnOverride numeric="26606" spn="CTS"/>
 <spnOverride numeric="26609" spn="Shine"/>
-<spnOverride numeric="26801" spn="voda P"/>
+<spnOverride numeric="26801" spn="Vodafone P"/>
 <spnOverride numeric="26803" spn="NOS"/>
 <spnOverride numeric="26806" spn="MEO"/>
 <spnOverride numeric="27001" spn="POST"/>
@@ -633,10 +648,11 @@
 <spnOverride numeric="330120" spn="Open Mob"/>
 <spnOverride numeric="334020" spn="TELCEL"/>
 <spnOverride numeric="334030" spn="Movistar"/>
-<spnOverride numeric="33403" spn="TEMM"/>
+<spnOverride numeric="33403" spn="Movistar"/>
 <spnOverride numeric="334050" spn="AT&amp;T"/>
 <spnOverride numeric="334070" spn="AT&amp;T"/>
-<spnOverride numeric="334090" spn="Nextel"/>
+<spnOverride numeric="334090" spn="AT&amp;T"/>
+<spnOverride numeric="334140" spn="ALTAN"/>
 <spnOverride numeric="33420" spn="TELCEL"/>
 <spnOverride numeric="33450" spn="AT&amp;T"/>
 <spnOverride numeric="33490" spn="AT&amp;T"/>
@@ -1301,7 +1317,10 @@
 <!-- #endif ODM_HQ_EDIT-->
 <spnOverride numeric="45203" spn="S-Fone"/>
 <spnOverride numeric="45204" spn="VIETTEL"/>
-<spnOverride numeric="45205" spn="VNMOBILE"/>
+<!-- #ifdef ODM_HQ_EDIT -->
+<!-- shihaiguang@ODM_HQ.Network.SPN 63444, 2020/09/09, modify spn name-->
+<spnOverride numeric="45205" spn="Vietnamobile"/>
+<!-- #endif ODM_HQ_EDIT-->
 <spnOverride numeric="45206" spn="EVN Telecom"/>
 <spnOverride numeric="45207" spn="Gmobile"/>
 <spnOverride numeric="45208" spn="EVN Telecom"/>
@@ -1385,8 +1404,8 @@
 <spnOverride numeric="470001" spn="Grameen"/>
 <spnOverride numeric="47001" spn="Grameenphone"/>
 <spnOverride numeric="47002" spn="robi"/>
-<spnOverride numeric="47003" spn="BL"/>
-<spnOverride numeric="47004" spn="bMobile"/>
+<spnOverride numeric="47003" spn="Banglalink"/>
+<spnOverride numeric="47004" spn="Teletalk"/>
 <spnOverride numeric="47007" spn="Airtel"/>
 <spnOverride numeric="47009" spn="BGD-BIEL"/>
 <spnOverride numeric="47201" spn="DHIRAAGU"/>

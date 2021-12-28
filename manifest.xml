@@ -1,4 +1,4 @@
-<manifest version="1.0" type="device" target-level="3">
+<manifest version="1.0" type="device" target-level="4">
     <hal format="hidl">
         <name>android.hardware.audio</name>
         <transport>hwbinder</transport>
@@ -143,12 +143,12 @@
     <hal format="hidl">
         <name>android.hardware.keymaster</name>
         <transport>hwbinder</transport>
-        <version>3.0</version>
+        <version>4.0</version>
         <interface>
             <name>IKeymasterDevice</name>
             <instance>default</instance>
         </interface>
-        <fqname>@3.0::IKeymasterDevice/default</fqname>
+        <fqname>@4.0::IKeymasterDevice/default</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.light</name>
@@ -245,12 +245,6 @@
         <fqname>@1.1::IRadioConfig/default</fqname>
     </hal>
     <hal format="hidl">
-        <name>android.hardware.secure_element</name>
-        <transport>hwbinder</transport>
-        <fqname>@1.0::ISecureElement/SIM1</fqname>
-        <fqname>@1.0::ISecureElement/SIM2</fqname>
-    </hal>
-    <hal format="hidl">
         <name>android.hardware.sensors</name>
         <transport>hwbinder</transport>
         <version>2.0</version>
@@ -319,6 +313,36 @@
             <instance>default</instance>
         </interface>
         <fqname>@1.2::ISupplicant/default</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>interfaces.factoryAta</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IFactoryAta</name>
+            <instance>default</instance>
+        </interface>
+        <fqname>@1.0::IFactoryAta/default</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>interfaces.factoryInterface</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IFactoryInterface</name>
+            <instance>default</instance>
+        </interface>
+        <fqname>@1.0::IFactoryInterface/default</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.egistec.hardware.fingerprint</name>
+        <transport>hwbinder</transport>
+        <version>4.0</version>
+        <interface>
+            <name>IBiometricsFingerprintRbs</name>
+            <instance>default</instance>
+        </interface>
+        <fqname>@4.0::IBiometricsFingerprintRbs/default</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.mediatek.hardware.atci</name>
@@ -546,16 +570,6 @@
         <fqname>@2.1::IPower/default</fqname>
     </hal>
     <hal format="hidl">
-        <name>vendor.mediatek.hardware.pplagent</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IPplAgent</name>
-            <instance>default</instance>
-        </interface>
-        <fqname>@1.0::IPplAgent/default</fqname>
-    </hal>
-    <hal format="hidl">
         <name>vendor.mediatek.hardware.pq</name>
         <transport>hwbinder</transport>
         <version>2.3</version>
@@ -642,6 +656,16 @@
         <fqname>@1.0::IBiometricsFace/default</fqname>
     </hal>
     <hal format="hidl">
+        <name>vendor.oppo.hardware.biometrics.fingerprint</name>
+        <transport>hwbinder</transport>
+        <version>2.1</version>
+        <interface>
+            <name>IBiometricsFingerprint</name>
+            <instance>default</instance>
+        </interface>
+        <fqname>@2.1::IBiometricsFingerprint/default</fqname>
+    </hal>
+    <hal format="hidl">
         <name>vendor.oppo.hardware.biometrics.fingerprintpay</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
@@ -690,6 +714,16 @@
             <instance>default</instance>
         </interface>
         <fqname>@1.0::IKtv/default</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.oppo.hardware.nfc</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IOppoNfc</name>
+            <instance>default</instance>
+        </interface>
+        <fqname>@1.0::IOppoNfc/default</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.oppo.hardware.oiface</name>

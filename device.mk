@@ -260,6 +260,7 @@ PRODUCT_PACKAGES += \
 
 # Properties
 -include $(DEVICE_PATH)/system.prop
+-include $(DEVICE_PATH)/vendor.prop
 PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE := true
 
 # Public Libraries

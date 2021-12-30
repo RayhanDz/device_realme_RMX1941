@@ -186,11 +186,36 @@ PRODUCT_PACKAGES += \
 
 # Init
 PRODUCT_PACKAGES += \
-    init.performance.rc \
-    init.safailnet.rc \
-    fstab.mt6765 \
+    engineer_vendor_shell.sh \
     perf_profile.sh \
+    init.oppo.face.sh \
+    init.oppo.face_calib.sh \
+    init.oppo.wifi.debug.sh \
+    oppo-install-recovery.sh \
     set_zram.sh
+    fstab.enableswap \
+    fstab.mt6765 \
+    factory_init.connectivity.rc \
+    factory_init.project.rc \
+    factory_init.rc \
+    init.aee.rc \
+    init.ago.rc \
+    init.connectivity.rc \
+    init.modem.rc \
+    init.mt6765.rc \
+    init.mt6765.usb.rc \
+    init.oppo.reserve.rc \
+    init.oppo.vendor.motor.rc \
+    init.performance.rc \
+    init.project.rc \
+    init.safailnet.rc \
+    init.sensor_1_0.rc \
+    meta_init.connectivity.rc \
+    meta_init.modem.rc \
+    meta_init.project.rc \
+    meta_init.rc \
+    multi_init.rc \
+    ueventd.mt6765.rc
 
 # Keylayouts
 PRODUCT_COPY_FILES += \

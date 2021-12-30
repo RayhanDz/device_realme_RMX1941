@@ -1,3 +1,26 @@
+<!--
+    Input:
+        manifest_target_level_p.xml
+        manifest_audio.xml
+        manifest_dsds.xml
+        manifest_radioconfig.xml
+        manifest_pplagent.xml
+        manifest_em.xml
+        manifest_bgservice.xml
+        manifest_op_dsds.xml
+        manifest_wifi.xml
+        manifest_videotelephony.xml
+        manifest_km3.xml
+        manifest_tee.xml
+        manifest_trustonic.xml
+        manifest_log.xml
+        manifest_mdmonitor.xml
+        manifest_netdagent.xml
+        manifest_pq.xml
+        manifest_mmservice.xml
+        manifest_gnss.xml
+        manifest.xml
+-->
 <manifest version="1.0" type="device" target-level="3">
     <hal format="hidl">
         <name>android.hardware.audio</name>
@@ -131,16 +154,6 @@
         <fqname>@2.1::IMapper/default</fqname>
     </hal>
     <hal format="hidl">
-        <name>android.hardware.health</name>
-        <transport>hwbinder</transport>
-        <version>2.0</version>
-        <interface>
-            <name>IHealth</name>
-            <instance>default</instance>
-        </interface>
-        <fqname>@2.0::IHealth/default</fqname>
-    </hal>
-    <hal format="hidl">
         <name>android.hardware.keymaster</name>
         <transport>hwbinder</transport>
         <version>3.0</version>
@@ -149,16 +162,6 @@
             <instance>default</instance>
         </interface>
         <fqname>@3.0::IKeymasterDevice/default</fqname>
-    </hal>
-    <hal format="hidl">
-        <name>android.hardware.light</name>
-        <transport>hwbinder</transport>
-        <version>2.0</version>
-        <interface>
-            <name>ILight</name>
-            <instance>default</instance>
-        </interface>
-        <fqname>@2.0::ILight/default</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.media.omx</name>
@@ -319,6 +322,15 @@
             <instance>default</instance>
         </interface>
         <fqname>@1.2::ISupplicant/default</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.mediatek.hardware.gpu</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IGraphicExt</name>
+            <instance>default</instance>
+        </interface>
     </hal>
     <hal format="hidl">
         <name>vendor.mediatek.hardware.atci</name>

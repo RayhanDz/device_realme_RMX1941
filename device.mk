@@ -112,7 +112,6 @@ PRODUCT_COPY_FILES += \
 	
 # Extras
 PRODUCT_PACKAGES += \
-    $(DEVICE_PATH)/configs/public.libraries.txt:$(TARGET_COPY_OUT_SYSTEM)/etc/public.libraries.txt \
     $(DEVICE_PATH)/configs/public.libraries-trustonic.txt:$(TARGET_COPY_OUT_SYSTEM)/etc/public.libraries-trustonic.txt \
     $(DEVICE_PATH)/configs/sys_gps_lbs_config.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sys_gps_lbs_config.xml 
 
@@ -237,6 +236,10 @@ PRODUCT_PACKAGES += \
 # Properties
 -include $(DEVICE_PATH)/system.prop
 PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE := true
+
+# Public Libraries
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/public.libraries.txt:$(TARGET_COPY_OUT_VENDOR)/etc/public.libraries.txt
 
 # NusantaraPapers
 PRODUCT_PACKAGES += \

@@ -6,8 +6,8 @@ vendor/lib64/libadsprpc.so
 etc/apns-conf.xml:product/etc/apns-conf.xml
 
 # Bluetooth (AptX)
-lib64/libaptX_encoder.so
-lib64/libaptXHD_encoder.so
+vendor/lib64/libaptX_encoder.so
+vendor/lib64/libaptXHD_encoder.so
 
 # Camera
 vendor/lib/libdpframework.so:product/vendor_overlay/29/lib/libdpframework.so
@@ -145,10 +145,6 @@ vendor/lib64/libbluetooth_mtk.so
 vendor/lib64/libbluetooth_mtk_pure.so
 vendor/lib64/libbluetooth_relayer.so
 vendor/lib64/libbt-vendor.so
-
-# Bluetooth-AptX
-lib64/libaptXHD_encoder.so
-lib64/libaptX_encoder.so
 
 # CDSP
 vendor/lib64/libcdsprpc.so

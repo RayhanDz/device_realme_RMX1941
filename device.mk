@@ -176,13 +176,15 @@ PRODUCT_COPY_FILES += \
 	
 # HIDL
 PRODUCT_PACKAGES += \
+    android.hidl.allocator@1.0 \
+    android.hidl.base@1.0 \
     android.hidl.base@1.0_system \
+    android.hidl.manager@1.0 \
     android.hidl.manager@1.0_system \
     libhidltransport \
     libhidltransport.vendor \
     libhwbinder \
-    libhwbinder.vendor \
-	vendor.lineage.trust@1.0-service
+    libhwbinder.vendor
 
 # IMS
 PRODUCT_PACKAGES += \

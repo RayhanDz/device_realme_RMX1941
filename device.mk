@@ -57,7 +57,11 @@ PRODUCT_PACKAGES += \
     audio.r_submix.default \
     audio.usb.default \
     libaudiofoundation.vendor \
-    libtinycompress
+    libtinycompress \
+    libtinycompress \
+    libtinyxml \
+    libalsautils \
+    libnbaio_mono
 
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/audio/audio_device.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_device.xml \

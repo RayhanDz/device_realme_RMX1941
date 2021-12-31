@@ -35,18 +35,20 @@ $(call inherit-product-if-exists, packages/apps/RealmeDirac/dirac.mk)
 # Parts
 $(call inherit-product-if-exists, packages/apps/RealmeParts/parts.mk)
 
+# APEX
 # Disable APEX compression
 # Keep this after including updatable_apex.mk
 PRODUCT_COMPRESSED_APEX := false
 
-PRODUCT_SHIPPING_API_LEVEL := 28
-
-# Boot animation
-TARGET_SCREEN_HEIGHT := 1560
-TARGET_SCREEN_WIDTH := 720
-
 # Always preopt extracted APKs to prevent extracting out of the APK for gms modules.
 PRODUCT_ALWAYS_PREOPT_EXTRACTED_APK := true
+
+# APNs
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/rootdir/etc/apns-conf.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/apns-conf.xml \
+    $(DEVICE_PATH)/rootdir/etc/apns-conf.xml:$(TARGET_COPY_OUT_SYSTEM)/system_ext/etc/apns-conf.xml \
+    $(DEVICE_PATH)/rootdir/etc/spn-conf.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/spn-conf.xml \
+    $(DEVICE_PATH)/rootdir/etc/spn-conf.xml:$(TARGET_COPY_OUT_SYSTEM)/system_ext/etc/spn-conf.xml
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -65,7 +67,7 @@ PRODUCT_PACKAGES += \
     libtinyxml \
     libalsautils \
     libnbaio_mono
-
+	
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/audio/audio_device.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_device.xml \
     $(DEVICE_PATH)/configs/audio/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml \
@@ -73,9 +75,7 @@ PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/audio/audio_policy.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy.conf \
     $(DEVICE_PATH)/configs/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
     $(DEVICE_PATH)/configs/audio/audio_policy_configuration_bluetooth_legacy_hal.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration_bluetooth_legacy_hal.xml \
-    $(DEVICE_PATH)/configs/audio/audio_policy_volumes.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml
-
-PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/configs/audio/audio_policy_volumes.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml \
     frameworks/av/services/audiopolicy/config/a2dp_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/a2dp_in_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_in_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/bluetooth_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_audio_policy_configuration.xml \
@@ -90,23 +90,11 @@ PRODUCT_PACKAGES += \
     libbtconfigstore \
     libldacBT_bco \
     libldacBT_dec
-  
-# PrebuiltPackages
-PRODUCT_PACKAGES += \
-    GoogleCameraGo \
-	Gboard
 	
-# APNs
-PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/rootdir/etc/apns-conf.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/apns-conf.xml \
-    $(DEVICE_PATH)/rootdir/etc/apns-conf.xml:$(TARGET_COPY_OUT_SYSTEM)/system_ext/etc/apns-conf.xml \
-    $(DEVICE_PATH)/rootdir/etc/spn-conf.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/spn-conf.xml \
-    $(DEVICE_PATH)/rootdir/etc/spn-conf.xml:$(TARGET_COPY_OUT_SYSTEM)/system_ext/etc/spn-conf.xml
-	
-# fastbootd
-PRODUCT_PACKAGES += \
-    fastbootd
-	
+# Boot animation
+TARGET_SCREEN_HEIGHT := 1560
+TARGET_SCREEN_WIDTH := 720
+
 # Camera
 PRODUCT_PACKAGES += \
     android.hardware.camera.device@3.2.vendor \
@@ -133,7 +121,12 @@ PRODUCT_PACKAGES += \
     android.hardware.drm@1.1.vendor \
     android.hardware.drm@1.2 \
     android.hardware.drm@1.2.vendor \
-
+	
+# fastbootd
+PRODUCT_PACKAGES += \
+    fastbootd
+	
+# fstab
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/rootdir/etc/fstab.mt6765:$(TARGET_COPY_OUT_RAMDISK)/fstab.mt6765
 
@@ -142,12 +135,129 @@ PRODUCT_PACKAGES += \
     android.hardware.gatekeeper@1.0-service \
     android.hardware.gatekeeper@1.0.vendor \
     android.hardware.gatekeeper@1.0-impl
-
+	
 # GPS
 PRODUCT_PACKAGES += \
     android.hardware.gnss@2.0 \
     android.hardware.gnss@2.0.vendor
+	
+# Health
+PRODUCT_PACKAGES += \
+    android.hardware.health@2.1-impl \
+    android.hardware.health@2.1-impl.recovery \
+    android.hardware.health@2.1-service
+	
+# HIDL
+PRODUCT_PACKAGES += \
+    android.hidl.allocator@1.0 \
+    android.hidl.allocator@1.0.vendor \
+    libhidltransport \
+    libhidltransport.vendor \
+    libhwbinder \
+    libhwbinder.vendor
+	
+# IMS
+PRODUCT_PACKAGES += \
+    mtk-ims \
+    mtk-ims-telephony
 
+# ImsInit hack
+PRODUCT_PACKAGES += \
+    ImsInit
+	
+# Init
+PRODUCT_PACKAGES += \
+    engineer_vendor_shell.sh \
+    perf_profile.sh \
+    init.oppo.face.sh \
+    init.oppo.face_calib.sh \
+    init.oppo.wifi.debug.sh \
+    oppo-install-recovery.sh \
+    set_zram.sh
+    fstab.enableswap \
+    fstab.mt6765 \
+    factory_init.connectivity.rc \
+    factory_init.project.rc \
+    factory_init.rc \
+    init.aee.rc \
+    init.ago.rc \
+    init.connectivity.rc \
+    init.modem.rc \
+    init.mt6765.rc \
+    init.mt6765.usb.rc \
+    init.oppo.reserve.rc \
+    init.oppo.vendor.motor.rc \
+    init.performance.rc \
+    init.project.rc \
+    init.safailnet.rc \
+    init.sensor_1_0.rc \
+    meta_init.connectivity.rc \
+    meta_init.modem.rc \
+    meta_init.project.rc \
+    meta_init.rc \
+    multi_init.rc \
+    ueventd.mt6765.rc
+	
+# Keylayouts
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/keylayout/mtk-kpd.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/mtk-kpd.kl \
+    $(DEVICE_PATH)/keylayout/touchpanel.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/touchpanel.kl
+	
+# Keymaster
+PRODUCT_PACKAGES += \
+    libkeymaster3.vendor \
+    libkeymaster3support.vendor \
+    android.hardware.keymaster@3.0-impl \
+    android.hardware.keymaster@3.0-service
+
+# KPOC
+PRODUCT_PACKAGES += \
+    libsuspend
+	
+# Lights
+PRODUCT_PACKAGES += \
+    android.hardware.light@2.0-service.mediatek
+	
+# Media
+PRODUCT_PACKAGES += \
+    com.android.media.swcodec \
+    libsfplugin_ccodec
+	
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/configs/media/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml \
+    $(DEVICE_PATH)/configs/media/media_codecs_c2.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_c2.xml \
+    $(DEVICE_PATH)/configs/media/media_codecs_ffmpeg.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_ffmpeg.xml \
+    $(DEVICE_PATH)/configs/media/media_codecs_mediatek_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_mediatek_audio.xml \
+    $(DEVICE_PATH)/configs/media/media_codecs_mediatek_video.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_mediatek_video.xml \
+    $(DEVICE_PATH)/configs/media/media_codecs_oppo.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_oppo.xml \
+    $(DEVICE_PATH)/configs/media/media_codecs_oppo_performance.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_oppo_performance.xml \
+    $(DEVICE_PATH)/configs/media/media_codecs_oppo_video.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_oppo_video.xml \
+    $(DEVICE_PATH)/configs/media/media_codecs_performance.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_performance.xml \
+    $(DEVICE_PATH)/configs/media/media_profiles_V1_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_V1_0.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_audio.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_video_le.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_video_le.xml
+
+# Neutral Networks
+PRODUCT_PACKAGES += \
+    android.hardware.neuralnetworks@1.0 \
+    android.hardware.neuralnetworks@1.0.vendor \
+    android.hardware.neuralnetworks@1.1 \
+    android.hardware.neuralnetworks@1.1.vendor \
+    android.hardware.neuralnetworks@1.2 \
+    android.hardware.neuralnetworks@1.2.vendor
+	
+# NusantaraPapers
+PRODUCT_PACKAGES += \
+    NusantaraPapers
+	
+# Overlays
+DEVICE_PACKAGE_OVERLAYS += \
+    $(DEVICE_PATH)/overlay
+
+PRODUCT_PACKAGES += \
+    NotchBarKiller \
+    BatteryHealthOverlay
+	
 # Permissions
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/permissions/com.mediatek.op.ims.common.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/com.mediatek.op.ims.common.xml \
@@ -195,126 +305,18 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.verified_boot.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.verified_boot.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/handheld_core_hardware.xml
 
-# Health
-PRODUCT_PACKAGES += \
-    android.hardware.health@2.1-impl \
-    android.hardware.health@2.1-impl.recovery \
-    android.hardware.health@2.1-service
-
-# HIDL
-PRODUCT_PACKAGES += \
-    android.hidl.allocator@1.0 \
-    android.hidl.allocator@1.0.vendor \
-    libhidltransport \
-    libhidltransport.vendor \
-    libhwbinder \
-    libhwbinder.vendor
-
-# IMS
-PRODUCT_PACKAGES += \
-    mtk-ims \
-    mtk-ims-telephony
-
-# ImsInit hack
-PRODUCT_PACKAGES += \
-    ImsInit
-
-# Init
-PRODUCT_PACKAGES += \
-    engineer_vendor_shell.sh \
-    perf_profile.sh \
-    init.oppo.face.sh \
-    init.oppo.face_calib.sh \
-    init.oppo.wifi.debug.sh \
-    oppo-install-recovery.sh \
-    set_zram.sh
-    fstab.enableswap \
-    fstab.mt6765 \
-    factory_init.connectivity.rc \
-    factory_init.project.rc \
-    factory_init.rc \
-    init.aee.rc \
-    init.ago.rc \
-    init.connectivity.rc \
-    init.modem.rc \
-    init.mt6765.rc \
-    init.mt6765.usb.rc \
-    init.oppo.reserve.rc \
-    init.oppo.vendor.motor.rc \
-    init.performance.rc \
-    init.project.rc \
-    init.safailnet.rc \
-    init.sensor_1_0.rc \
-    meta_init.connectivity.rc \
-    meta_init.modem.rc \
-    meta_init.project.rc \
-    meta_init.rc \
-    multi_init.rc \
-    ueventd.mt6765.rc
-
-# Keylayouts
-PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/keylayout/mtk-kpd.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/mtk-kpd.kl \
-    $(DEVICE_PATH)/keylayout/touchpanel.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/touchpanel.kl
-	
-# Keymaster
-PRODUCT_PACKAGES += \
-    libkeymaster3.vendor \
-    libkeymaster3support.vendor \
-    android.hardware.keymaster@3.0-impl \
-    android.hardware.keymaster@3.0-service
-
-# KPOC
-PRODUCT_PACKAGES += \
-    libsuspend
-
-# Lights
-PRODUCT_PACKAGES += \
-    android.hardware.light@2.0-service.mediatek
-	
-# Media
-PRODUCT_PACKAGES += \
-    com.android.media.swcodec \
-    libsfplugin_ccodec
-
-PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/configs/media/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml \
-    $(DEVICE_PATH)/configs/media/media_codecs_c2.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_c2.xml \
-    $(DEVICE_PATH)/configs/media/media_codecs_ffmpeg.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_ffmpeg.xml \
-    $(DEVICE_PATH)/configs/media/media_codecs_mediatek_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_mediatek_audio.xml \
-    $(DEVICE_PATH)/configs/media/media_codecs_mediatek_video.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_mediatek_video.xml \
-    $(DEVICE_PATH)/configs/media/media_codecs_oppo.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_oppo.xml \
-    $(DEVICE_PATH)/configs/media/media_codecs_oppo_performance.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_oppo_performance.xml \
-    $(DEVICE_PATH)/configs/media/media_codecs_oppo_video.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_oppo_video.xml \
-    $(DEVICE_PATH)/configs/media/media_codecs_performance.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_performance.xml \
-    $(DEVICE_PATH)/configs/media/media_profiles_V1_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_V1_0.xml \
-    frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_audio.xml \
-    frameworks/av/media/libstagefright/data/media_codecs_google_video_le.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_video_le.xml
-
-# Neutral Networks
-PRODUCT_PACKAGES += \
-    android.hardware.neuralnetworks@1.0 \
-    android.hardware.neuralnetworks@1.0.vendor \
-    android.hardware.neuralnetworks@1.1 \
-    android.hardware.neuralnetworks@1.1.vendor \
-    android.hardware.neuralnetworks@1.2 \
-    android.hardware.neuralnetworks@1.2.vendor
-
-# Overlays
-DEVICE_PACKAGE_OVERLAYS += \
-    $(DEVICE_PATH)/overlay
-
-PRODUCT_PACKAGES += \
-    NotchBarKiller \
-    BatteryHealthOverlay 
-	
 # Power
 PRODUCT_PACKAGES += \
     android.hardware.power@1.0.vendor \
     android.hardware.power@1.1.vendor \
     android.hardware.power@1.2.vendor \
     android.hardware.power@1.3.vendor
-
+	
+# PrebuiltPackages
+PRODUCT_PACKAGES += \
+    GoogleCameraGo \
+	Gboard
+	
 # Properties
 -include $(DEVICE_PATH)/system.prop
 -include $(DEVICE_PATH)/vendor.prop
@@ -324,10 +326,6 @@ PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE := true
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/public.libraries.txt:$(TARGET_COPY_OUT_VENDOR)/etc/public.libraries.txt
 
-# NusantaraPapers
-PRODUCT_PACKAGES += \
-    NusantaraPapers
-	
 # Radio
 PRODUCT_PACKAGES += \
     android.hardware.broadcastradio@1.0.vendor \
@@ -342,7 +340,7 @@ PRODUCT_PACKAGES += \
     android.hardware.radio.config@1.1.vendor \
     android.hardware.radio.config@1.2.vendor \
     android.hardware.radio.deprecated@1.0.vendor
-
+	
 # RcsService
 PRODUCT_PACKAGES += \
     com.android.ims.rcsmanager \
@@ -359,7 +357,12 @@ PRODUCT_MINIMIZE_JAVA_DEBUG_INFO := true
 # RenderScript
 PRODUCT_PACKAGES += \
     android.hardware.renderscript@1.0-impl
-
+	
+# Screen density
+PRODUCT_AAPT_CONFIG := xxhdpi
+PRODUCT_AAPT_PREF_CONFIG := xxhdpi
+PRODUCT_AAPT_PREBUILT_DPI := xhdpi xxhdpi 
+	
 # Seccomp
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/seccomp/configstore@1.1.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/configstore@1.1.policy \
@@ -370,21 +373,19 @@ PRODUCT_COPY_FILES += \
 # Secure element
 PRODUCT_PACKAGES += \
     android.hardware.secure_element@1.0.vendor
-
+	
 # Sensors
 PRODUCT_PACKAGES += \
     android.hardware.sensors@2.0.vendor
-
-# Screen density
-PRODUCT_AAPT_CONFIG := xxhdpi
-PRODUCT_AAPT_PREF_CONFIG := xxhdpi
-PRODUCT_AAPT_PREBUILT_DPI := xhdpi xxhdpi 
-
-# Speed profile services and wifi-service to reduce RAM and storage.
-PRODUCT_SYSTEM_SERVER_COMPILER_FILTER := speed-profile
+	
+# Shipping API
+PRODUCT_SHIPPING_API_LEVEL := 28
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += $(DEVICE_PATH)
+
+# Speed profile services and wifi-service to reduce RAM and storage.
+PRODUCT_SYSTEM_SERVER_COMPILER_FILTER := speed-profile
 
 # Symbols
 PRODUCT_PACKAGES += \
@@ -435,4 +436,3 @@ PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/wifi/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf \
     $(DEVICE_PATH)/configs/wifi/wpa_supplicant.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant.conf \
     $(DEVICE_PATH)/configs/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf
-

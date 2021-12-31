@@ -51,9 +51,11 @@ PRODUCT_ALWAYS_PREOPT_EXTRACTED_APK := true
 # Audio
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
+    android.hardware.audio@5.0.vendor \
     android.hardware.audio.effect@5.0-impl \
-    android.hardware.audio.common@5.0-util \
+    android.hardware.audio.common@5.0-util.vendor \
     android.hardware.bluetooth.audio@2.0-impl \
+    android.hardware.soundtrigger@2.2.vendor \
     audio.bluetooth.default \
     audio.r_submix.default \
     audio.usb.default \
@@ -82,6 +84,9 @@ PRODUCT_COPY_FILES += \
 
 # Bluetooth
 PRODUCT_PACKAGES += \
+    android.hardware.bluetooth.a2dp@1.0 \
+    android.hardware.bluetooth.a2dp@1.0.vendor \
+    android.hardware.bluetooth@1.0.vendor \
     libbtconfigstore \
     libldacBT_bco \
     libldacBT_dec
@@ -116,6 +121,15 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     fastbootd
 	
+# Camera
+PRODUCT_PACKAGES += \
+    android.hardware.camera.device@3.2.vendor \
+    android.hardware.camera.device@3.3.vendor \
+    android.hardware.camera.device@3.4.vendor \
+    android.hardware.camera.device@3.5.vendor \
+    android.hardware.camera.provider@2.4 \
+    android.hardware.camera.provider@2.4.vendor
+	
 # Display
 PRODUCT_PACKAGES += \
     android.hardware.graphics.allocator@2.0-impl \
@@ -127,10 +141,12 @@ PRODUCT_PACKAGES += \
 	
 # DRM
 PRODUCT_PACKAGES += \
-    android.hardware.drm@1.0-impl \
-    android.hardware.drm@1.0-service \
-    android.hardware.drm@1.2-service.clearkey \
-    android.hardware.drm@1.2-service.widevine
+    android.hardware.drm@1.0 \
+    android.hardware.drm@1.0.vendor \
+    android.hardware.drm@1.1 \
+    android.hardware.drm@1.1.vendor \
+    android.hardware.drm@1.2 \
+    android.hardware.drm@1.2.vendor \
 
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/rootdir/etc/fstab.mt6765:$(TARGET_COPY_OUT_RAMDISK)/fstab.mt6765
@@ -143,9 +159,15 @@ PRODUCT_PACKAGES += \
 # Gatekeeper
 PRODUCT_PACKAGES += \
     android.hardware.gatekeeper@1.0-service \
+    android.hardware.gatekeeper@1.0.vendor \
     android.hardware.gatekeeper@1.0-impl
 
 # gps
+# GPS
+PRODUCT_PACKAGES += \
+    android.hardware.gnss@2.0 \
+    android.hardware.gnss@2.0.vendor
+	
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/gps_debug.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/gps_debug.conf \
     $(DEVICE_PATH)/configs/gps_debug.conf:$(TARGET_COPY_OUT_SYSTEM)/system_ext/etc/gps_debug.conf \
@@ -207,6 +229,7 @@ PRODUCT_PACKAGES += \
 # HIDL
 PRODUCT_PACKAGES += \
     android.hidl.allocator@1.0 \
+    android.hidl.allocator@1.0.vendor \
     android.hidl.base@1.0 \
     android.hidl.base@1.0_system \
     android.hidl.manager@1.0 \
@@ -297,6 +320,15 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_audio.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video_le.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_video_le.xml
 
+# Neutral Networks
+PRODUCT_PACKAGES += \
+    android.hardware.neuralnetworks@1.0 \
+    android.hardware.neuralnetworks@1.0.vendor \
+    android.hardware.neuralnetworks@1.1 \
+    android.hardware.neuralnetworks@1.1.vendor \
+    android.hardware.neuralnetworks@1.2 \
+    android.hardware.neuralnetworks@1.2.vendor
+
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
     $(DEVICE_PATH)/overlay
@@ -304,6 +336,13 @@ DEVICE_PACKAGE_OVERLAYS += \
 PRODUCT_PACKAGES += \
     NotchBarKiller \
     BatteryHealthOverlay 
+	
+# Power
+PRODUCT_PACKAGES += \
+    android.hardware.power@1.0.vendor \
+    android.hardware.power@1.1.vendor \
+    android.hardware.power@1.2.vendor \
+    android.hardware.power@1.3.vendor
 
 # Properties
 -include $(DEVICE_PATH)/system.prop
@@ -320,17 +359,18 @@ PRODUCT_PACKAGES += \
 	
 # Radio
 PRODUCT_PACKAGES += \
-    android.hardware.broadcastradio@1.0 \
-    android.hardware.broadcastradio@1.1 \
-    android.hardware.radio@1.0 \
-    android.hardware.radio@1.1 \
-    android.hardware.radio@1.2 \
-    android.hardware.radio@1.3 \
-    android.hardware.radio@1.4 \
-    android.hardware.radio@1.5 \
-    android.hardware.radio.config@1.1 \
-    android.hardware.radio.config@1.2 \
-    android.hardware.radio.deprecated@1.0
+    android.hardware.broadcastradio@1.0.vendor \
+    android.hardware.broadcastradio@1.1.vendor \
+    android.hardware.radio@1.0.vendor \
+    android.hardware.radio@1.1.vendor \
+    android.hardware.radio@1.2.vendor \
+    android.hardware.radio@1.3.vendor \
+    android.hardware.radio@1.4.vendor \
+    android.hardware.radio@1.5.vendor \
+    android.hardware.radio.config@1.0.vendor \
+    android.hardware.radio.config@1.1.vendor \
+    android.hardware.radio.config@1.2.vendor \
+    android.hardware.radio.deprecated@1.0.vendor
 
 # RcsService
 PRODUCT_PACKAGES += \
@@ -356,6 +396,14 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/seccomp/mediaextractor.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediaextractor.policy \
     $(LOCAL_PATH)/configs/seccomp/mediaswcodec.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediaswcodec.policy
 
+# Secure element
+PRODUCT_PACKAGES += \
+    android.hardware.secure_element@1.0.vendor
+
+# Sensors
+PRODUCT_PACKAGES += \
+    android.hardware.sensors@2.0.vendor
+
 # Screen density
 PRODUCT_AAPT_CONFIG := xxhdpi
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
@@ -373,10 +421,8 @@ PRODUCT_PACKAGES += \
 	
 # USB
 PRODUCT_PACKAGES += \
-	android.hardware.usb@1.1-service-mediatek \
-    android.hardware.usb@1.0 \
-    android.hardware.usb@1.1
-
+    android.hardware.usb@1.0.vendor \
+    android.hardware.usb@1.1.vendor
 # VNDK
 PRODUCT_COPY_FILES += \
     prebuilts/vndk/v29/arm64/arch-arm-armv8-a/shared/vndk-core/libmedia_helper.so:$(TARGET_COPY_OUT_VENDOR)/lib/libmedia_helper-v29.so \
@@ -397,6 +443,15 @@ PRODUCT_PACKAGES += \
     wpa_supplicant.conf
 
 PRODUCT_PACKAGES += \
+    android.hardware.wifi@1.0.vendor \
+    android.hardware.wifi@1.1.vendor \
+    android.hardware.wifi@1.2.vendor \
+    android.hardware.wifi@1.3.vendor \
+    android.hardware.wifi.supplicant@1.0.vendor \
+    android.hardware.wifi.supplicant@1.1.vendor \
+    android.hardware.wifi.supplicant@1.2.vendor \
+    android.hardware.wifi.hostapd@1.0.vendor \
+    android.hardware.wifi.hostapd@1.1.vendor \
     libkeystore-engine-wifi-hidl \
     libkeystore-wifi-hidl
 

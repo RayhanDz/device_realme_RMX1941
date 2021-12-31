@@ -44,7 +44,7 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     PRIVATE_BUILD_DESC="full_oppo6762-user 10 QP1A.190711.020 bedd37e98646d3a1 release-keys"
 
 # Build FP
-BUILD_FINGERPRINT :="google/redfin/redfin:11/RQ3A.210805.001.A1/7474174:user/release-keys"
+BUILD_FINGERPRINT :="google/coral/coral:11/RQ3A.210905.001/7511028:user/release-keys"
 
 PRODUCT_GMS_CLIENTID_BASE := android-oppo
 

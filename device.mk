@@ -52,6 +52,7 @@ PRODUCT_ALWAYS_PREOPT_EXTRACTED_APK := true
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
     android.hardware.audio.effect@5.0-impl \
+    android.hardware.audio.common@5.0-util \
     android.hardware.bluetooth.audio@2.0-impl \
     audio.bluetooth.default \
     audio.r_submix.default \

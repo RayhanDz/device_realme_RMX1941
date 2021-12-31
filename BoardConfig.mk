@@ -145,6 +145,3 @@ TARGET_PRODUCT_PROP += $(DEVICE_PATH)/product.prop
 
 # Security Patch Level
 VENDOR_SECURITY_PATCH := $(PLATFORM_SECURITY_PATCH)
-
-# System Properties
-TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop

@@ -90,20 +90,6 @@ PRODUCT_PACKAGES += \
     libbtconfigstore \
     libldacBT_bco \
     libldacBT_dec
-
-PRODUCT_PACKAGES += \
-    bt_did \
-	bt_mtk_iot_list \
-	bt_stack \
-	mtk_bt_fw \
-	mtk_bt_stack
-	
-PRODUCT_COPY_FILES += \
-  $(DEVICE_PATH)/bluetooth/bt_did.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/bluetooth/bt_did.conf \
-  $(DEVICE_PATH)/bluetooth/bt_mtk_iot_list.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/bluetooth/bt_mtk_iot_list.conf \
-  $(DEVICE_PATH)/bluetooth/bt_stack.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/bluetooth/bt_stack.conf \
-  $(DEVICE_PATH)/bluetooth/mtk_bt_fw.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/bluetooth/mtk_bt_fw.conf \
-  $(DEVICE_PATH)/bluetooth/mtk_bt_stack.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/bluetooth/mtk_bt_stack.conf
   
 # PrebuiltPackages
 PRODUCT_PACKAGES += \
@@ -150,28 +136,17 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/rootdir/etc/fstab.mt6765:$(TARGET_COPY_OUT_RAMDISK)/fstab.mt6765
-	
-# Extras
-PRODUCT_PACKAGES += \
-    $(DEVICE_PATH)/configs/public.libraries-trustonic.txt:$(TARGET_COPY_OUT_SYSTEM)/etc/public.libraries-trustonic.txt \
-    $(DEVICE_PATH)/configs/sys_gps_lbs_config.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sys_gps_lbs_config.xml
-	
+
 # Gatekeeper
 PRODUCT_PACKAGES += \
     android.hardware.gatekeeper@1.0-service \
     android.hardware.gatekeeper@1.0.vendor \
     android.hardware.gatekeeper@1.0-impl
 
-# gps
 # GPS
 PRODUCT_PACKAGES += \
     android.hardware.gnss@2.0 \
     android.hardware.gnss@2.0.vendor
-	
-PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/configs/gps_debug.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/gps_debug.conf \
-    $(DEVICE_PATH)/configs/gps_debug.conf:$(TARGET_COPY_OUT_SYSTEM)/system_ext/etc/gps_debug.conf \
-    $(DEVICE_PATH)/configs/gps_debug.conf:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_EXTRA_VNDK_VERSIONS)/etc/gps_debug.conf
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -419,6 +394,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.0.vendor \
     android.hardware.usb@1.1.vendor
+	
 # VNDK
 PRODUCT_COPY_FILES += \
     prebuilts/vndk/v29/arm64/arch-arm-armv8-a/shared/vndk-core/libmedia_helper.so:$(TARGET_COPY_OUT_VENDOR)/lib/libmedia_helper-v29.so \

@@ -396,7 +396,8 @@ PRODUCT_SYSTEM_SERVER_COMPILER_FILTER := speed-profile
 
 # Symbols
 PRODUCT_PACKAGES += \
-    libshim_showlogo
+    libshim_showlogo \
+    libshim_vtservice 
 	
 # USB
 PRODUCT_PACKAGES += \

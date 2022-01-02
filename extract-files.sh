@@ -64,6 +64,9 @@ function blob_fixup {
         lib/libshowlogo.so)
             "$PATCHELF" --add-needed "libshim_showlogo.so" "$2"
             ;;
+        vendor/lib/libladder.so|vendor/lib64/libladder.so)
+            "${PATCHELF}" --replace-needed "libunwindstack.so" "libunwindstack-v29.so" "${2}"
+            ;;
     esac
 }
 

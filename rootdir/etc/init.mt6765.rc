@@ -145,7 +145,7 @@ on fs
     write /sys/kernel/mm/swap/vma_ra_enabled false
     write /sys/block/zram0/disksize 2147483648
 
-    swapon_all /fstab.enableswap
+    swapon_all /fstab.mt6765
 
 on fs
    mount iso9660 loop@/vendor/etc/iAmCdRom.iso /mnt/cd-rom ro

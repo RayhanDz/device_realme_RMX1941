@@ -184,7 +184,6 @@ PRODUCT_PACKAGES += \
     init.oppo.wifi.debug.sh \
     oppo-install-recovery.sh \
     set_zram.sh \
-    fstab.enableswap \
     fstab.mt6765 \
     factory_init.connectivity.rc \
     factory_init.project.rc \

@@ -67,6 +67,9 @@ function blob_fixup {
         vendor/lib/libladder.so|vendor/lib64/libladder.so)
             "${PATCHELF}" --replace-needed "libunwindstack.so" "libunwindstack-v29.so" "${2}"
             ;;
+        vendor/lib/hw/audio.primary.mt6765.so)
+            "${PATCHELF}" --replace-needed "libmedia_helper.so" "libmedia_helper-v29.so" "${2}"
+            ;;
     esac
 }
 

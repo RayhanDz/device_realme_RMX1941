@@ -3,7 +3,6 @@
 # ADDITIONAL VENDOR BUILD PROPERTIES
 #
 
-ro.oppo.theme.version=7000
 ro.hardware.egl=mtk
 vendor.camera.mdp.cz.enable=1
 ro.opengles.version=196610

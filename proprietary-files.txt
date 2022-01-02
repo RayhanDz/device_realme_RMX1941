@@ -827,9 +827,6 @@ vendor/etc/init/vendor.oppo.hardware.oiface@1.0-service.rc
 vendor/etc/permissions/vendor-oppo-engnative-engineer.xml
 vendor/etc/permissions/vendor-oppo-engnative-engsensor.xml
 vendor/etc/permissions/vendor-oppo-hardware.cryptoeng.xml
-vendor/etc/media_codecs_oppo.xml
-vendor/etc/media_codecs_oppo_performance.xml
-vendor/etc/media_codecs_oppo_video.xml
 vendor/lib/hw/vendor.oppo.hardware.ktv@1.0-impl.so
 vendor/lib/hw/vendor.oppo.hardware.oiface@1.0-impl.so
 vendor/lib/libOPPORectify.so

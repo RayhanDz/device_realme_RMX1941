@@ -378,25 +378,6 @@ vendor/lib64/hw/hwcomposer.mt6765.so
 vendor/lib64/hw/memtrack.mt6765.so
 vendor/lib64/libdrm.so
 
-# Fingerprint
-vendor/bin/hw/vendor.oppo.hardware.biometrics.face@1.0-service
-vendor/bin/hw/vendor.oppo.hardware.biometrics.fingerprintpay@1.0-service
-vendor/etc/init/vendor.oppo.hardware.biometrics.face@1.0-service.rc
-vendor/etc/init/vendor.oppo.hardware.biometrics.fingerprintpay@1.0-service.rc
-vendor/etc/permissions/vendor-oppo-hardware.biometrics.fingerprintpay.xml
-vendor/lib/hw/fingerprint.silead.default.so
-vendor/lib/libsl_fp_algo.so
-vendor/lib/libsl_fp_impl.so
-vendor/lib/libsl_fp_nosec.so
-vendor/lib/libsl_fp_prepro.so
-vendor/lib/vendor.oppo.hardware.biometrics.face@1.0.so
-vendor/lib64/hw/fingerprint.silead.default.so
-vendor/lib64/libsl_fp_algo.so
-vendor/lib64/libsl_fp_impl.so
-vendor/lib64/libsl_fp_nosec.so
-vendor/lib64/libsl_fp_prepro.so
-vendor/lib64/vendor.oppo.hardware.biometrics.fingerprintpay@1.0.so
-
 # Firmware
 etc/firmware/hx_criteria.csv
 vendor/firmware/customfilter/catcher_filter_1_ulwctg_n_FullLog.bin
@@ -407,27 +388,6 @@ vendor/firmware/customfilter/catcher_filter_1_ulwctg_n_meta.bin
 vendor/firmware/emmc/SAMSUNG-GD6BMB.bin_crc.bin
 vendor/firmware/emmc/move_target_emmc_fw_to_opporeserve1.sh
 vendor/firmware/emmc/move_target_emmc_fw_to_reserve4.sh
-vendor/firmware/fastchg/17197/oppo_vooc_fw.bin
-vendor/firmware/fastchg/18073/oppo_vooc_fw.bin
-vendor/firmware/fastchg/18073/oppo_vooc_fw_n76e.bin
-vendor/firmware/fastchg/18151/oppo_vooc_fw.bin
-vendor/firmware/fastchg/18311/oppo_vooc_fw.bin
-vendor/firmware/fastchg/18531/oppo_vooc_fw.bin
-vendor/firmware/fastchg/18561/oppo_vooc_fw.bin
-vendor/firmware/fastchg/18561/oppo_vooc_fw_n76e.bin
-vendor/firmware/fastchg/18593/oppo_vooc_fw.bin
-vendor/firmware/fastchg/18593/oppo_vooc_fw_n76e.bin
-vendor/firmware/fastchg/19011/oppo_vooc_fw.bin
-vendor/firmware/fastchg/19151/oppo_vooc_fw.bin
-vendor/firmware/fastchg/19151/oppo_vooc_fw_rk826.bin
-vendor/firmware/fastchg/19301/oppo_vooc_fw.bin
-vendor/firmware/fastchg/19350/oppo_vooc_fw.bin
-vendor/firmware/fastchg/19350/oppo_vooc_fw_rk826.bin
-vendor/firmware/fastchg/19531/oppo_vooc_fw.bin
-vendor/firmware/fastchg/19531/oppo_vooc_fw_op10.bin
-vendor/firmware/fastchg/19531/oppo_vooc_fw_rk826.bin
-vendor/firmware/fastchg/19661/oppo_vooc_fw.bin
-vendor/firmware/fastchg/20682/oppo_vooc_fw.bin
 vendor/firmware/tp/18540/Himax_firmware.bin
 vendor/firmware/tp/18540/Himax_firmware_signed.bin
 vendor/firmware/tp/18540/gt9xx_fw.bin
@@ -1988,26 +1948,12 @@ vendor/lib64/vendor.oppo.hardware.ktv@1.0.so
 vendor/lib64/vendor.oppo.hardware.oiface@1.0.so
 vendor/lib64/vendor.oppo.hardware.wifi.hostapd@1.0.so
 vendor/lib64/vendor.oppo.hardware.wifi.supplicant@1.0.so
-vendor/oppo/ck.fs
-vendor/oppo/recovery_rootcheck
-vendor/oppoex/ld.config.oppo.txt
--vendor/overlay/OppoPermissionControllerOverlay/OppoPermissionControllerOverlay.apk
--vendor/overlay/OppoGmailOverlay.apk
--vendor/overlay/OppoPhoneActivationResCommon.apk
-
-# Perf
-
-# Postprocessing
 
 # Power-Hardware
 vendor/lib/hw/power.default.so
 vendor/lib/hw/power.mt6765.so
 vendor/lib64/hw/power.default.so
 vendor/lib64/hw/power.mt6765.so
-
-# QMI
-
-# Radio
 
 # Sensors
 vendor/lib/libsensorndkbridge.so
@@ -2016,15 +1962,6 @@ vendor/lib64/hw/sensors.mt6765.so
 vendor/lib64/libsensor_custom.so
 vendor/lib64/libsensorndkbridge.so
 vendor/lib64/sensors.ap.so
-
-# Soter
--app/SoterService/SoterService.apk
-vendor/bin/hw/vendor.trustonic.soter@1.0-service
-vendor/etc/init/vendor.trustonic.soter@1.0-service.rc
-vendor/lib64/libMcTeeSoter.so
-vendor/lib64/libSoterProvision.so
-vendor/lib64/soter_attk_provision.so
-vendor/lib64/vendor.qti.hardware.soter@1.0.so
 
 # Thermal
 vendor/bin/hw/android.hardware.thermal@1.0-service
@@ -2047,8 +1984,6 @@ vendor/lib64/hw/android.hardware.thermal@1.0-impl.so
 # Thermal-Hardware
 vendor/lib/hw/thermal.mt6765.so
 vendor/lib64/hw/thermal.mt6765.so
-
-# Time
 
 # Trustonic TEE
 lib/libMcRegistry.so
@@ -2106,7 +2041,6 @@ vendor/etc/init/nvram_daemon.rc
 vendor/etc/init/tee.rc
 vendor/etc/init/trustonic.rc
 vendor/etc/partition_permission.sh
-vendor/recovery-from-boot.p
 
 # Misc
 vendor/app/EmCamera/lib/arm64/libem_camera_jni.so

@@ -5,8 +5,8 @@ allow init same_process_hal_file:file execute;
 allow init vendor_file:file { execute execute_no_trans };
 
 allow init hidl_base_hwservice:hwservice_manager add;
-
 allow init hal_tee_hwservice:hwservice_manager { add  find };
+allow init hal_secure_element_hwservice:hwservice_manager { add };
 
 # Allow init to write touchpanel nodes
 allow init proc:file { open write };

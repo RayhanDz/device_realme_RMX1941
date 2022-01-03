@@ -372,6 +372,11 @@ PRODUCT_PACKAGES += \
 # Reduce system image size by limiting java debug info.
 PRODUCT_MINIMIZE_JAVA_DEBUG_INFO := true
 
+# Remove Packages
+PRODUCT_PACKAGES += \
+    remove_packages
+
+
 # RenderScript
 PRODUCT_PACKAGES += \
     android.hardware.renderscript@1.0-impl

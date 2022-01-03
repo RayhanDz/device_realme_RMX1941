@@ -406,7 +406,11 @@ PRODUCT_SYSTEM_SERVER_COMPILER_FILTER := speed-profile
 PRODUCT_PACKAGES += \
     libshim_showlogo \
     libshim_vtservice 
-	
+
+# Thermal
+PRODUCT_PACKAGES += \
+    android.hardware.thermal@1.0-impl \
+    android.hardware.thermal@1.0-service
 # USB
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.0.vendor \

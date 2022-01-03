@@ -12,3 +12,6 @@ allow init proc_tp:file rw_file_perms;
 allow init socket_device:sock_file create_file_perms;
 
 allow init sysfs_sensor:file setattr;
+
+# Allow init to find hal_secure_element_hwservice
+allow init hal_secure_element_hwservice:hwservice_manager find;

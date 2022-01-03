@@ -29,6 +29,7 @@ cc_library_shared {
         "libaudioclient",
         "libgui",
         "libstagefright",
+        "libutils",
     ],
     header_libs: [
         "libaudioclient_headers",

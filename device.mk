@@ -131,12 +131,13 @@ PRODUCT_PACKAGES += \
     android.hardware.drm@1.1.vendor \
     android.hardware.drm@1.2 \
     android.hardware.drm@1.2.vendor \
+    android.hardware.drm@1.3-service.clearkey
 	
 # fastbootd
 PRODUCT_PACKAGES += \
     fastbootd
-	
-# fstab
+
+# FSTAB
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/rootdir/etc/fstab.mt6765:$(TARGET_COPY_OUT_RAMDISK)/fstab.mt6765
 

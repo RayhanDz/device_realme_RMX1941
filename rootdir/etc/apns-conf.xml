@@ -28657,10 +28657,7 @@ difference in APN profile of MyRepublic and StarHub. it was causing ID miss matc
       protocol="IPV4V6"
       roaming_protocol="IPV4V6"
   />
-   <!-- #ifdef ODM_HQ_EDIT -->
-   <!-- wangyong@ODM_HQ.NW.VI need.241845, 2021/03/31,Delete duplicate idea operator IMS APN-->
-   <!-- chetan.chauhan@PSW.NW.IMS VENDOR_EDIT add IMS for Idea India start  -->
-   <!--
+
  <apn carrier="IMS"
       mcc="404"
       mnc="22"

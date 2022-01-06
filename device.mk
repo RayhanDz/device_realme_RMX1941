@@ -46,8 +46,7 @@ PRODUCT_ALWAYS_PREOPT_EXTRACTED_APK := true
 # APNs
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/rootdir/etc/apns-conf.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/apns-conf.xml \
-    $(DEVICE_PATH)/rootdir/etc/apns-conf.xml:$(TARGET_COPY_OUT_SYSTEM)/system_ext/etc/apns-conf.xml \
-    $(DEVICE_PATH)/rootdir/etc/spn-conf.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/spn-conf.xml \
+    $(DEVICE_PATH)/rootdir/etc/apns-conf.xml:$(TARGET_COPY_OUT_SYSTEM)/product/etc/apns-conf.xml \
     $(DEVICE_PATH)/rootdir/etc/spn-conf.xml:$(TARGET_COPY_OUT_SYSTEM)/system_ext/etc/spn-conf.xml
 
 # Audio

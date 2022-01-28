@@ -239,9 +239,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_MINIMIZE_JAVA_DEBUG_INFO := true
 	
 # Screen density
-PRODUCT_AAPT_CONFIG := xxhdpi
-PRODUCT_AAPT_PREF_CONFIG := xxhdpi
-PRODUCT_AAPT_PREBUILT_DPI := xhdpi xxhdpi 
+PRODUCT_AAPT_CONFIG := xxxhdpi
+PRODUCT_AAPT_PREF_CONFIG := xxxhdpi
+PRODUCT_AAPT_PREBUILT_DPI := xxxhdpi xxhdpi xhdpi hdpi
 
 # Speed profile services and wifi-service to reduce RAM and storage.
 PRODUCT_SYSTEM_SERVER_COMPILER_FILTER := speed-profile

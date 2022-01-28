@@ -19,7 +19,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # Inherit some common NusantaraROM stuff.
-$(call inherit-product, vendor/nusantara/config/common_full_phone.mk)
+$(call inherit-product, vendor/komodo/config/common_full_phone.mk)
 
 # Inherit from RMX2185 device makefile
 $(call inherit-product, device/realme/RMX2185/device.mk)
@@ -31,7 +31,7 @@ ALLOW_MISSING_DEPENDENCIES=true
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := RMX2185
-PRODUCT_NAME := nad_RMX2185
+PRODUCT_NAME := komodo_RMX2185
 PRODUCT_BRAND := realme
 PRODUCT_MODEL := Realme C2
 PRODUCT_MANUFACTURER := realme

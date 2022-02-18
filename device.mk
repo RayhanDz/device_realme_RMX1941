@@ -98,7 +98,7 @@ PRODUCT_PACKAGES += \
     android.hardware.drm@1.2-service.widevine
 
 PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/rootdir/etc/fstab.mt6765:$(TARGET_COPY_OUT_RAMDISK)/fstab.mt6765
+    $(DEVICE_PATH)/rootdir/etc/fstab.mt6765:$(TARGET_COPY_OUT_SYSTEM)/etc/fstab.mt6765
 	
 # Extras
 PRODUCT_PACKAGES += \

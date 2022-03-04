@@ -49,8 +49,8 @@ void setRMX(unsigned int variant)
 {
     RMX218X_props prop[4] = {};
 
-    std::string build_desc = "full_oppo6765-user 10 QP1A.190711.020 bedd37e98646d3a1 release-keys";
-    std::string build_fingerprint = "google/redfin/redfin:11/RQ3A.210705.001/7380771:user/release-keys";
+    std::string build_desc = "raven-user 12 SQ1D.220205.004 8151327 release-keys";
+    std::string build_fingerprint = "google/raven/raven:12/SQ1D.220205.004/8151327:user/release-keys";
 
     // RMX2180
     prop[0] = {

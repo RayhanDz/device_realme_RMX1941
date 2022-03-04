@@ -37,15 +37,12 @@ PRODUCT_MODEL := Realme C2
 PRODUCT_MANUFACTURER := realme
 PRODUCT_RELEASE_NAME := Realme C2
 
-# Build info
-PRODUCT_BUILD_PROP_OVERRIDES += \
-    TARGET_DEVICE=RMX2185 \
-    PRODUCT_NAME=RMX2185 \
-    PRIVATE_BUILD_DESC="full_oppo6762-user 10 QP1A.190711.020 bedd37e98646d3a1 release-keys"
-
 # Build FP
-BUILD_FINGERPRINT :="google/redfin/redfin:11/RQ3A.210805.001.A1/7474174:user/release-keys"
+BUILD_FINGERPRINT := "google/raven/raven:12/SQ1D.220205.004/8151327:user/release-keys"
 
-PRODUCT_GMS_CLIENTID_BASE := android-oppo
+PRODUCT_BUILD_PROP_OVERRIDES := \
+    PRIVATE_BUILD_DESC="raven-user 12 SQ1D.220205.004 8151327 release-keys"
+
+PRODUCT_GMS_CLIENTID_BASE := android-google
 
 

@@ -74,7 +74,6 @@ ro.config.sdha_apps_bg_max=64
 ro.config.sdha_apps_bg_min=8
 
 # Perf
-ro.vendor.perf.scroll_opt=true
 ro.kernel.android.checkjni=0
 ro.vold.umsdirtyratio=20
 ro.min_pointer_dur=1

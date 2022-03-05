@@ -212,6 +212,10 @@ PRODUCT_PACKAGES += \
     NotchBarKiller \
     BatteryHealthOverlay 
 	
+# Remove Packages
+PRODUCT_PACKAGES += \
+    RemovePackages
+	
 PRODUCT_PACKAGES += \
     RMX2180_overlay \
     RMX2185_overlay \

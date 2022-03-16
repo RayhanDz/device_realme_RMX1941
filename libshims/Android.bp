@@ -6,3 +6,16 @@ cc_library_shared {
         "libutils",
     ],
 }
+
+cc_library_shared {
+    name: "libshim_vtservice",
+    srcs: ["libshim_vtservice.cpp"],
+    shared_libs: [
+    ],
+}
+
+java_library {
+    name: "ImsServiceBase",
+    installable: true,
+    srcs: ["ImsServiceBase.java"],
+}

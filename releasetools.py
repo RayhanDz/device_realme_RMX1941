@@ -35,4 +35,3 @@ def OTA_InstallEnd(info):
   info.script.Print("Patching firmware images...")
   AddImage(info, "vbmeta.img", "/dev/block/by-name/vbmeta")
   return
-

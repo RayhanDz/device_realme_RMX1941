@@ -76,4 +76,3 @@ common_preload                                   /common_preload       ext4    r
 # Trusted Execution Environment (TEE)
 /dev/block/platform/bootdevice/by-name/tee1      /tee1                 emmc    defaults                                            defaults
 /dev/block/platform/bootdevice/by-name/tee2      /tee2                 emmc    defaults                                            defaults
-/dev/block/zram0                                  none                 swap    defaults                                            zramsize=2147483648

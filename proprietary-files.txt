@@ -1,6 +1,3 @@
-# ADSP
-vendor/lib64/libadsprpc.so
-
 # APNs
 etc/apns-conf.xml:product/etc/apns-conf.xml
 
@@ -8,93 +5,24 @@ etc/apns-conf.xml:product/etc/apns-conf.xml
 lib64/libaptX_encoder.so
 lib64/libaptXHD_encoder.so
 
-# Camera
-vendor/lib/libdpframework.so:product/vendor_overlay/29/lib/libdpframework.so
-vendor/lib64/libdpframework.so:product/vendor_overlay/29/lib64/libdpframework.so
+# Camera - from RMX2185_11_A.65
+vendor/lib/libdpframework.so:product/vendor_overlay/29/lib/libdpframework.so|c65a86fb5e7a0f71183e86e52ef023eae16eaddc
+vendor/lib64/libdpframework.so:product/vendor_overlay/29/lib64/libdpframework.so|54395fb0de799d1162405bff912e1095013b400f
 
-# CarrierConfig
--priv-app/MtkCarrierConfig/MtkCarrierConfig.apk
+# Dirac - from Xiaomi
+vendor/etc/diracmobile.config:product/vendor_overlay/29/etc/diracmobile.config|d781cd6798a7481a8f7128d144abfb2b8794212d
+vendor/lib/libDiracAPI_SHARED.so:product/vendor_overlay/29/lib/libDiracAPI_SHARED.so|42b49679d38eca93fead05ea06ddbdc8108fd4b1
+vendor/lib/soundfx/libdirac.so:product/vendor_overlay/29/lib/soundfx/libdirac.so|f63826a905b520fa524e4c1b147be7cf65240953
 
 # Engineering Mode
 -priv-app/EngineerMode/EngineerMode.apk
 lib/libem_support_jni.so
 lib64/libem_support_jni.so
 
-# framework
--framework/mediatek-wfo-legacy.jar
--framework/mediatek-ims-legacy.jar
--framework/mediatek-ims-extension-plugin.jar
--framework/mediatek-framework.jar
--framework/mediatek-common.jar
--framework/mediatek-ims-base.jar
--framework/mediatek-ims-common.jar
--framework/mediatek-telecom-common.jar
--framework/mediatek-telephony-base.jar
--framework/mediatek-telephony-common .jar
-
-# Kernel Power Offline Charging (KPOC)
+# Kernel Power Off Charging (KPOC)
 bin/kpoc_charger
 etc/init/kpoc_charger.rc
 lib/libshowlogo.so
-lib/libsysenv_system.so
 
 # MTK-IMS
-bin/vtservice
-etc/init/init.vtservice.rc
-lib/libmtk_vt_service.so
-lib/libmtk_vt_wrapper.so
-lib/libmtkaudio_utils.so
-lib/libmtkavenhancements.so
-lib/libmtklimiter.so
-lib/libmtkperf_client.so
-lib/libmtkshifter.so
-lib/libvcodec_cap.so
-lib/libvcodec_capenc.so
-lib/libvt_avsync.so
-lib64/libmtk_vt_wrapper.so
-lib64/libmtkaudio_utils.so
-lib64/libmtkavenhancements.so
-lib64/libmtklimiter.so
-lib64/libmtkperf_client.so
-lib64/libmtkshifter.so
-lib64/libvcodec_cap.so
-lib64/libvcodec_capenc.so
-
 -priv-app/ImsService/ImsService.apk
-
-# MTK-IMS | From bomb RP1A.200720.011 release-keys
-lib/libcomutils.so|be7c7b0901119cb260186061b90ef5b6a8292ae2
-lib/libimsma.so|c9e524600acb37296d7c73aa9db56d21e1a88d5b
-lib/libimsma_adapt.so|25159303e5d6404f08bda6456c8fcc2150005a9b
-lib/libimsma_rtp.so|ce2515dfb4802b4c6a121bae848e57342f0d43b9
-lib/libimsma_socketwrapper.so|5c63d8ec795fd0b7b9efcdc1adf4d81c5853c73a
-lib/libsignal.so|e008452949ea9bf486bf9892f024f82edcec5819
-lib/libsink.so|00e2ec0cc399e5411ffa35dbfc0d0d3c17ecc7df
-lib/libsource.so|0e01c6c5d76e21629463d1f94d28d1b8f91c4c30
-system_ext/lib/vendor.mediatek.hardware.videotelephony@1.0.so|ecb6326c2a040b930a6bfc744ca761b7856154cd
-system_ext/lib64/vendor.mediatek.hardware.videotelephony@1.0.so|5ed11753481998f26a6e39a9bd270dac3f0da46f
-
-# Permissions
-permissions/com.mediatek.op.ims.common.xml
-permissions/privapp-permissions-mediatek.xml
-permissions/platform.xml
-permissions/privapp-permissions-whitelist-product.xml
-permissions/privapp-permissions-whitelist-system.xml
-permissions/privapp-permissions-whitelist-system_ext.xml
-
-# Soter
--app/SoterService/SoterService.apk
-
-# TeeService
-lib/libTeeServiceJni.so
-lib/libTeeClient.so
-lib/libteeservice_client.trustonic.so
-lib64/libTeeServiceJni.so
-lib64/libTeeClient.so
-lib64/libteeservice_client.trustonic.so
-priv-app/TeeService/lib/arm64/libTeeServiceJni.so
--priv-app/TeeService/TeeService.apk
-
-
-
-

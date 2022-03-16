@@ -18,35 +18,31 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-# Inherit some common AOSP's stuff.
-$(call inherit-product, vendor/nusantara/config/common.mk)
+# Inherit some common NusantaraROM stuff.
+$(call inherit-product, vendor/nusantara/config/common_full_phone.mk)
 
 # Inherit from RMX2185 device makefile
 $(call inherit-product, device/realme/RMX2185/device.mk)
 
 # NusantaraProject stuff
-TARGET_INCLUDE_PIXEL_CHARGER := true
 TARGET_BOOT_ANIMATION_RES := 720
 ALLOW_MISSING_DEPENDENCIES=true
-PREBUILT_LAWNCHAIR := true
 
-#Faceunlock
-TARGET_FACE_UNLOCK_SUPPORTED := true
-
-# Device identifier. This must come after all inclusions
-PRODUCT_DEVICE := RMX2185
+# Device identifier. This must come after all inclusions.
 PRODUCT_NAME := nad_RMX2185
+PRODUCT_DEVICE := RMX2185
 PRODUCT_BRAND := realme
-PRODUCT_MODEL := Realme G35
+PRODUCT_MODEL := Realme G35 Series
 PRODUCT_MANUFACTURER := realme
-PRODUCT_RELEASE_NAME := Realme G35 Series
 
-# Build FP
-BUILD_FINGERPRINT := "google/raven/raven:12/SQ1D.220205.004/8151327:user/release-keys"
+# Build info
+BUILD_FINGERPRINT := "google/coral/coral:11/RQ3A.210805.001.A1/7474174:user/release-keys"
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    TARGET_DEVICE=RMX2185 \
+    PRODUCT_NAME=RMX2185 \
+    PRIVATE_BUILD_DESC="full_oppo6762-user 10 QP1A.190711.020 bedd37e98646d3a1 release-keys"
 
-PRODUCT_BUILD_PROP_OVERRIDES := \
-    PRIVATE_BUILD_DESC="raven-user 12 SQ1D.220205.004 8151327 release-keys"
+PRODUCT_GMS_CLIENTID_BASE := android-realme
 
-PRODUCT_GMS_CLIENTID_BASE := android-google
-
-
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.build.fingerprint=$(BUILD_FINGERPRINT)

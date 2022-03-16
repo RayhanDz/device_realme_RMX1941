@@ -6,4 +6,3 @@ on boot
     # selinux nodes, hide permissive state
     chmod 0640 /sys/fs/selinux/enforce
     chmod 0440 /sys/fs/selinux/policy
-

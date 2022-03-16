@@ -15,15 +15,13 @@
 //
 
 cc_library_static {
-    name: "libinit_RMX2185",
+    name: "libinit_mt6765",
     recovery_available: true,
+    srcs: ["mt6765.cpp"],
     whole_static_libs: ["libbase"],
-    header_libs: [
-        "libbase_headers",
-    ],
-    srcs: ["init_RMX2185.cpp"],
     include_dirs: [
+        "system/core/base/include",
         "system/core/init"
-    ]
+    ],
+    shared_libs: ["libbase"],
 }
-

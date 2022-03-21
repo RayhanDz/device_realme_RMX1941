@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 #
 # Copyright (C) 2016 The CyanogenMod Project
-# Copyright (C) 2017-2020 The LineageOS Project
+# Copyright (C) 2017-2018 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -23,14 +23,16 @@ from hashlib import sha1
 device='RMX2185'
 vendor='realme'
 
-with open('proprietary-files.txt', 'r') as f:
-    lines = f.read().splitlines()
+lines = [line for line in open('proprietary-files.txt', 'r')]
 vendorPath = '../../../vendor/' + vendor + '/' + device + '/proprietary'
 needSHA1 = False
 
 
 def cleanup():
     for index, line in enumerate(lines):
+        # Remove '\n' character
+        line = line[:-1]
+
         # Skip empty or commented lines
         if len(line) == 0 or line[0] == '#' or '|' not in line:
             continue
@@ -41,6 +43,9 @@ def cleanup():
 
 def update():
     for index, line in enumerate(lines):
+        # Remove '\n' character
+        line = line[:-1]
+
         # Skip empty lines
         if len(line) == 0:
             continue
@@ -70,4 +75,7 @@ else:
     update()
 
 with open('proprietary-files.txt', 'w') as file:
-    file.write('\n'.join(lines) + '\n')
+    for line in lines:
+        file.write(line)
+
+    file.close()

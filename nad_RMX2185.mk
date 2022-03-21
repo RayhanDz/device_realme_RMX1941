@@ -25,7 +25,7 @@ $(call inherit-product, vendor/nusantara/config/common_full_phone.mk)
 $(call inherit-product, device/realme/RMX2185/device.mk)
 
 # NusantaraProject stuff
-TARGET_BOOT_ANIMATION_RES := 720
+TARGET_BOOT_ANIMATION_RES := 1560
 ALLOW_MISSING_DEPENDENCIES=true
 
 # Device identifier. This must come after all inclusions.

@@ -3,5 +3,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <string name="maintainer_name">Fraschze97</string>
-
+    <!-- Overlay for maintener --> 
+    <string name="github_username">AIV-97</string> 
+    <string name="telegram_username">noob_permanently2</string>
 </resources>

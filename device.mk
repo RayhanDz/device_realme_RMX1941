@@ -15,6 +15,7 @@
 #
 
 DEVICE_PATH := device/realme/RMX2185
+ALLOW_MISSING_DEPENDENCIES := true
 
 # Installs gsi keys into ramdisk, to boot a GSI with verified boot.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
@@ -25,6 +26,9 @@ $(call inherit-product, vendor/realme/RMX2185/RMX2185-vendor.mk)
 # Enable updating of APEXes
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
+# APEX
+DEXPREOPT_GENERATE_APEX_IMAGE := true
+
 PRODUCT_SHIPPING_API_LEVEL := 29
 
 # VNDK
@@ -34,50 +38,83 @@ PRODUCT_TARGET_VNDK_VERSIONS := 29
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 PRODUCT_BUILD_SUPER_PARTITION := false
 
-# Boot animation
-TARGET_SCREEN_HEIGHT := 1600
-TARGET_SCREEN_WIDTH := 720
-
 # Audio
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
-    GoogleCameraGo
+	libvisualizer \
+	libaudioprepocessing
 
 PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/audio/audio_policy_configuration.xml:system/etc/audio_policy_configuration.xml \
-    $(DEVICE_PATH)/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/audio_policy_configuration.xml \
-    $(DEVICE_PATH)/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_ODM)/etc/audio_policy_configuration.xml \
-    $(DEVICE_PATH)/audio/audio_effects.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/audio_effects.xml
-
+  $(DEVICE_PATH)/audio/audio_policy_configuration.xml:system/etc/audio_policy_configuration.xml \
+  $(DEVICE_PATH)/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/audio_policy_configuration.xml \
+  $(DEVICE_PATH)/audio/audio_effects.conf:$(TARGET_COPY_OUT_PRODUCT)/etc/audio_effects.conf \
+  $(DEVICE_PATH)/audio/audio_effects.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/audio_effects.xml  
+  
+# A/B
+AB_OTA_UPDATER := false
+  
+# Bluetooth
+PRODUCT_PACKAGES += \
+	bt_mtk_iot_list \
+	mtk_bt_fw \
+	mtk_bt_stack
+	
+PRODUCT_COPY_FILES += \
+  $(DEVICE_PATH)/bluetooth/bt_mtk_iot_list.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/bluetooth/bt_mtk_iot_list.conf \
+  $(DEVICE_PATH)/bluetooth/mtk_bt_fw.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/bluetooth/mtk_bt_fw.conf \
+  $(DEVICE_PATH)/bluetooth/mtk_bt_stack.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/bluetooth/mtk_bt_stack.conf
+  
+# PrebuiltPackages
+PRODUCT_PACKAGES += \
+    GoogleCameraGo
+	
+# Symbols 
+PRODUCT_PACKAGES += \
+    libshim_showlogo \
+    libshim_vtservice
+	
+# Apns
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/rootdir/etc/apns-conf.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/apns-conf.xml \
+	
 # fastbootd
 PRODUCT_PACKAGES += \
     fastbootd
 
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/rootdir/etc/fstab.mt6765:$(TARGET_COPY_OUT_RAMDISK)/fstab.mt6765
-
-# Fingerprint
+	
+# Extras
 PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint@2.1-service.RMX2185
+    $(DEVICE_PATH)/configs/public.libraries.txt:$(TARGET_COPY_OUT_SYSTEM)/etc/public.libraries.txt \
+    $(DEVICE_PATH)/configs/public.libraries-trustonic.txt:$(TARGET_COPY_OUT_SYSTEM)/etc/public.libraries-trustonic.txt \
+    $(DEVICE_PATH)/configs/sys_gps_lbs_config.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sys_gps_lbs_config.xml 
 
+# gps
 PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.hardware.fingerprint.xml \
-    frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/handheld_core_hardware.xml \
-    frameworks/native/data/etc/android.hardware.telephony.ims.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.hardware.telephony.ims.xml
+    $(DEVICE_PATH)/configs/gps_debug.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/gps_debug.conf \
+    $(DEVICE_PATH)/configs/gps_debug.conf:$(TARGET_COPY_OUT_SYSTEM)/system_ext/etc/gps_debug.conf \
+    $(DEVICE_PATH)/configs/gps_debug.conf:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_EXTRA_VNDK_VERSIONS)/etc/gps_debug.conf
 
+# Permissions
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/permissions/com.mediatek.op.ims.common.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/com.mediatek.op.ims.common.xml \
+    $(DEVICE_PATH)/permissions/privapp-permissions-mediatek.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-mediatek.xml \
+    $(DEVICE_PATH)/permissions/privapp-permissions-whitelist-system.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-whitelist-system.xml \
+    $(DEVICE_PATH)/permissions/privapp-permissions-whitelist-product.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-whitelist-product.xml \
+    $(DEVICE_PATH)/permissions/platform.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/platform.xml \
+    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:$(TARGET_COPY_OUT_SYSTEM)etc/permissions/android.hardware.telephony.gsm.xml \
+    frameworks/native/data/etc/android.hardware.telephony.ims.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.hardware.telephony.ims.xml \
+    frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/handheld_core_hardware.xml
+	
 # HIDL
 PRODUCT_PACKAGES += \
-    libhidltransport \
-    libhwbinder
-
-# IMS
-PRODUCT_PACKAGES += \
-    mtk-ims \
-    mtk-ims-telephony
-
-# ImsInit hack
-PRODUCT_PACKAGES += \
-    ImsInit
+    android.hidl.base@1.0_system \
+    android.hidl.manager@1.0_system
+	
+# IORap
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.iorapd.enable=true
 
 # Init
 PRODUCT_PACKAGES += \
@@ -85,13 +122,14 @@ PRODUCT_PACKAGES += \
     init.safailnet.rc \
     fstab.mt6765 \
     perf_profile.sh \
-    set_zram.sh
+    set_zram.sh 
 
-# Keylayouts
+# Input/DT2W
 PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/idc/mtk-kpd.idc:$(TARGET_COPY_OUT_SYSTEM)/usr/idc/mtk-kpd.idc \
-    $(DEVICE_PATH)/keylayout/mtk-kpd.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/mtk-kpd.kl \
-    $(DEVICE_PATH)/keylayout/touchpanel.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/touchpanel.kl
+    $(DEVICE_PATH)/configs/keylayout/touchpanel.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/touchpanel.kl \
+    $(DEVICE_PATH)/configs/keylayout/ACCDET.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/ACCDET.kl \
+    $(DEVICE_PATH)/configs/keylayout/mtk-kpd.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/mtk-kpd.kl \
+    $(DEVICE_PATH)/configs/keylayout/mtk-tpd.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/mtk-tpd.kl
 
 # KPOC
 PRODUCT_PACKAGES += \
@@ -102,38 +140,17 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service.RMX2185
 
-# LiveDisplay
-PRODUCT_PACKAGES += \
-    lineage.livedisplay@2.0-service-RMX2185
-
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
     $(DEVICE_PATH)/overlay
 
+# Power
 PRODUCT_PACKAGES += \
-    NotchBarKiller
-
-PRODUCT_PACKAGES += \
-    RMX2180_overlay \
-    RMX2185_overlay \
-    RMX2189_overlay
-
-# Permissions
-PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/permissions/com.mediatek.op.ims.common.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/com.mediatek.op.ims.common.xml \
-    $(DEVICE_PATH)/permissions/privapp-permissions-mediatek.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-mediatek.xml \
-    $(DEVICE_PATH)/permissions/privapp-permissions-whitelist-system.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-whitelist-system.xml \
-    $(DEVICE_PATH)/permissions/privapp-permissions-whitelist-system_ext.xml:$(TARGET_COPY_OUT_SYSTEM)/system_ext/etc/permissions/privapp-permissions-whitelist-system_ext.xml \
-    $(DEVICE_PATH)/permissions/privapp-permissions-whitelist-product.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-whitelist-product.xml \
-    $(DEVICE_PATH)/permissions/platform.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/platform.xml
+    power.mt6765
 
 # Properties
--include $(DEVICE_PATH)/system_prop.mk
+-include $(DEVICE_PATH)/system.prop
 PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE := true
-
-# Recovery
-PRODUCT_PACKAGES += \
-    init.recovery.mt6765.rc
 
 # RcsService
 PRODUCT_PACKAGES += \
@@ -141,15 +158,17 @@ PRODUCT_PACKAGES += \
     PresencePolling \
     RcsService
 
-# Soong namespaces
-PRODUCT_SOONG_NAMESPACES += $(DEVICE_PATH)
+# Screen density
+PRODUCT_AAPT_CONFIG := normal
+PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
-# Symbols
-PRODUCT_PACKAGES += \
-    libshim_showlogo
+# Soong namespaces
+PRODUCT_SOONG_NAMESPACES += $(DEVICE_PATH)   
+
+# Reduce system image size by limiting java debug info.
+PRODUCT_MINIMIZE_JAVA_DEBUG_INFO := true
 
 # Wi-Fi
 PRODUCT_PACKAGES += \
     TetheringConfigOverlay \
-    wpa_supplicant.conf \
-    WifiOverlay
+    wpa_supplicant.conf 

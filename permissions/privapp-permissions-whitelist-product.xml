@@ -45,4 +45,23 @@
 		<permission name="android.permission.RECEIVE_DATA_ACTIVITY_CHANGE"/>
 		<permission name="android.permission.COMPANION_APPROVE_WIFI_CONNECTIONS"/>
     </privapp-permissions>
+    <privapp-permissions package="com.android.launcher3">
+        <permission name="android.permission.INTERACT_ACROSS_USERS"/>
+		<permission name="android.permission.MANAGE_USERS"/>
+		<permission name="android.permission.FORCE_STOP_PACKAGES"/>
+		<permission name="android.permission.BIND_APPWIDGET"/>
+		<permission name="android.permission.WRITE_SECURE_SETTINGS"/>
+		<permission name="android.permission.CONTROL_REMOTE_APP_TRANSITION_ANIMATIONS"/>
+		<permission name="android.permission.PACKAGE_USAGE_STATS"/>
+		<permission name="android.permission.STATUS_BAR"/>
+		<permission name="android.permission.MEDIA_CONTENT_CONTROL"/>
+    </privapp-permissions>
+    <privapp-permissions package="com.android.wallpaper">
+        <permission name="android.permission.WRITE_SECURE_SETTINGS" />
+        <permission name="android.permission.SET_WALLPAPER_COMPONENT"/>
+        <permission name="android.permission.CHANGE_OVERLAY_PACKAGES"/>
+    </privapp-permissions>
+    <privapp-permissions package="org.omnirom.logcat">
+        <permission name="android.permission.READ_LOGS" />
+    </privapp-permissions>
 </permissions>

@@ -41,7 +41,7 @@ ro.sys.usb.charging.only=yes
 # USB debugging
 persist.service.adb.enable=1
 persist.service.debuggable=1
-persist.sys.usb.config=mtp,adb
+persist.sys.usb.config=adb
 
 # System
 persist.sys.binary_xml=false

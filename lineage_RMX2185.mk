@@ -19,7 +19,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # Inherit some common AOSP's stuff.
-$(call inherit-product, vendor/nusantara/config/common.mk)
+$(call inherit-product, vendor/lineage/config/common.mk)
 
 # Inherit from RMX2185 device makefile
 $(call inherit-product, device/realme/RMX2185/device.mk)
@@ -35,7 +35,7 @@ TARGET_FACE_UNLOCK_SUPPORTED := true
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := RMX2185
-PRODUCT_NAME := nad_RMX2185
+PRODUCT_NAME := lineage_RMX2185
 PRODUCT_BRAND := realme
 PRODUCT_MODEL := Realme G35
 PRODUCT_MANUFACTURER := realme

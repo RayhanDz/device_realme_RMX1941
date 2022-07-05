@@ -28,6 +28,7 @@ $(call inherit-product, device/realme/RMX2185/device.mk)
 TARGET_INCLUDE_PIXEL_CHARGER := true
 TARGET_BOOT_ANIMATION_RES := 720
 ALLOW_MISSING_DEPENDENCIES=true
+TARGET_USES_BLUR := true
 PREBUILT_LAWNCHAIR := true
 
 #Faceunlock

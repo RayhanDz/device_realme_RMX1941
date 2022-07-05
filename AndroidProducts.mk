@@ -15,9 +15,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/lineage_RMX2185.mk
+    $(LOCAL_DIR)/derp_RMX2185.mk
 	
 COMMON_LUNCH_CHOICES := \
-        lineage_RMX2185-eng \
-        lineage_RMX2185-user \
-        lineage_RMX2185-userdebug
+        derp_RMX2185-eng \
+        derp_RMX2185-user \
+        derp_RMX2185-userdebug

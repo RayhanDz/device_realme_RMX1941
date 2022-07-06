@@ -15,7 +15,7 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/javanes_RMX1941.mk
+    $(LOCAL_DIR)/javanese_RMX1941.mk
 	
 COMMON_LUNCH_CHOICES := \
         javanese_RMX1941-eng \

@@ -19,14 +19,16 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # Inherit some common NusantaraROM stuff.
-$(call inherit-product, vendor/javanese/config/common_full_phone.mk)
+$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
 # Inherit from RMX1941 device makefile
 $(call inherit-product, device/realme/RMX1941/device.mk)
 
-# NusantaraProject stuff
+# JavaneseOS stuff OFFICIAL TAG
 TARGET_BOOT_ANIMATION_RES := 720
 ALLOW_MISSING_DEPENDENCIES=true
+JAVANESE_OFFICIAL := true
+JAVANESE_VARIANT := RELEASE
 
 # Device identifier. This must come after all inclusions.
 PRODUCT_NAME := javanese_RMX1941

@@ -19,12 +19,12 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # Inherit some common AOSP's stuff.
-$(call inherit-product, vendor/derp/config/common.mk)
+$(call inherit-product, vendor/komodo/config/common.mk)
 
 # Inherit from RMX2185 device makefile
 $(call inherit-product, device/realme/RMX2185/device.mk)
 
-# NusantaraProject stuff
+# Komodo stuff
 TARGET_INCLUDE_PIXEL_CHARGER := true
 TARGET_BOOT_ANIMATION_RES := 720
 ALLOW_MISSING_DEPENDENCIES=true
@@ -36,7 +36,7 @@ TARGET_FACE_UNLOCK_SUPPORTED := true
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := RMX2185
-PRODUCT_NAME := derp_RMX2185
+PRODUCT_NAME := komodo_RMX2185
 PRODUCT_BRAND := realme
 PRODUCT_MODEL := Realme G35
 PRODUCT_MANUFACTURER := realme
